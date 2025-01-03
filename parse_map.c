@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/03 15:18:12 by nolecler         ###   ########.fr       */
+/*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
+/*   Updated: 2025/01/03 16:05:51 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include "MLX42/include/MLX42/MLX42.h"
-# include "get_next_line.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
+// creer une fonction qui verifie que la carte est entouree de 1
+// creer une fct qui verifie que le premier et le dernier est bien 1 partout
 
-typedef struct s_map
+int	check_wall(char *map)
 {
-	char **map;
-	int		x;
-	int		y;
+	int	i;
 
-}				t_map;
-
-
-
-// typedef struct pos_s
-// {
-// 	int		x;
-// 	int		y;
-// }				t_pos;
-
-
-
-
-
-#endif
+	i = 0;
+	while (map[i])
+	{
+		if (map[i] != '1') //on returne erreur et on arrete car la carte n'est pas valide
+			return (1);
+		i++;
+	}
+	return (0);
+}
