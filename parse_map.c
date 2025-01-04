@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/04 11:36:40 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:13:30 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int check_elements(char *map) // a renommer
 	i = 0;
 	while (map[i])
 	{
-		if (map[i] != '0' || map[i] != 'P' || map[i] != 'C' || map[i] != 'E' || map[i] != '1')
+		if (map[i] != '0' && map[i] != 'P' && map[i] != 'C' && map[i] != 'E' && map[i] != '1')
 			return (1); // erreur 
 			// afficher un message d'erreur ou pas??
 		i++;
@@ -94,6 +94,51 @@ int validate_map_elements(char *map) // plutot char **map??? donc rajouter la ha
 	return (0);
 }
 
-// Verifie qu'il y a un chemin valide cad les 0 = flood fill 
+// Verifie qu'il y a un chemin valide cad on peut aller de P a E tout en collectant les C = flood fill (recursion)
+// si C ou P ou E est entoure de mur = carte invalide
+// verifie que C , E, P n'est pas entoure que des murs
 
+
+typedef struct s_game
+{
+	char				**map;
+	char				**mapcopy;
+	int					row;
+	int					colum;
+	int					move_x;
+	int					move_y;	
+
+	// int					count_player;
+	// int					count_collect;
+	// int					count_moves;
+	// int					count_exit;
+}						t_game;
+
+void	flood_fill(t_game *game, int move_x, int move_y)
+{
+	if (move_x < 0 || move_y < 0 || move_x >= game->colum
+		|| move_y >= game->row || game->mapcopy[move_x][move_y] == '1'
+			|| game->mapcopy[move_x][move_y] == 'X')
+		return ;
+	if (((game->mapcopy[move_x + 1][move_y] == 'E')
+		|| (game->mapcopy[move_x - 1][move_y] == 'E'))
+		&& ((game->mapcopy[move_x][move_y + 1] == '1')
+			|| (game->mapcopy[move_x][move_y - 1] == '1')))
+		return ;
+	if (((game->mapcopy[move_x][move_y + 1] == 'E')
+		|| (game->mapcopy[move_x][move_y - 1] == 'E'))
+		&& ((game->mapcopy[move_x + 1][move_y] == '1')
+		|| (game->mapcopy[move_x - 1][move_y] == '1')))
+		return ;
+	if (game->mapcopy[move_x][move_y] == 'E' ||
+		game->mapcopy[move_x][move_y] == 'C')
+		game->mapcopy[move_x][move_y] = '0';
+	game->mapcopy[move_x][move_y] = 'X';
+	flood_fill(game, move_x - 1, move_y);
+	flood_fill(game, move_x + 1, move_y);
+	flood_fill(game, move_x, move_y - 1);
+	flood_fill(game, move_x, move_y + 1);
+}
+
+// bool mlx_resize_image(mlx_image_t* img, uint32_t nwidth, uint32_t nheight); (a proteger si jamais un echec)
 
