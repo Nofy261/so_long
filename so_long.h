@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/03 15:18:12 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/04 09:13:19 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 typedef struct s_map
 {
-	char **map;
-	int		x;
-	int		y;
+	char **map; // la carte 2D
+	int		width; // largeur
+	int		height; // hauteur
 
 }				t_map;
 

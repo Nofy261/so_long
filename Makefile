@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 14:08:07 by nolecler          #+#    #+#              #
-#    Updated: 2025/01/03 13:24:43 by nolecler         ###   ########.fr        #
+#    Updated: 2025/01/04 08:45:25 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = so_long
 
 FSRCS = main.c \
 		get_next_line.c \
+		get_next_line_utils.c \
 
 OFILES = $(FSRCS:.c=.o)
 
