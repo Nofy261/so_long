@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 16:20:09 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/05 16:32:43 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/05 17:46:07 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,8 @@
 // initialiser la bibliotheque mlx
 // mlx_t* mlx_init(int32_t width, int32_t height, const char* title, bool resize)
 // mlx_t* mlx = mlx_init(800, 600, "so_long", true); 
-
-// 800, 600 définissent la largeur et la hauteur de la fenêtre (en pixels).
-// "so_long" est le titre de la fenêtre.
-// true : un booléen qui indique si la fenêtre doit être en plein écran (true) ou en mode fenêtre (false).
-// true indique que MLX doit gérer le contexte graphique.
-// mlx_t* mlx :
-
-// mlx_t est un type défini par MLX pour représenter le contexte graphique.
-// mlx est un pointeur qui stocke toutes les informations nécessaires pour gérer la fenêtre et son contenu.
-
 // Retour : Si l'initialisation réussit, un pointeur valide (mlx) est retourné. Sinon, NULL est retourné, ce qui signifie que quelque chose s'est mal passé.
 
-
-// #include <MLX42/MLX42.h>
-// #include <stdio.h>
 
 // int main(void)
 // {
@@ -47,3 +34,15 @@
 //     mlx_terminate(mlx);
 //     return 0;
 // }
+
+//void mlx_resize_hook(mlx_t* mlx, mlx_resizefunc func, void* param);
+
+/**
+ * Generic loop hook for any custom hooks to add to the main loop. 
+ * Executes a function per frame, so be careful.
+ * 
+ * @param[in] mlx The MLX instance handle.
+ * @param[in] f The function.
+ * @param[in] param The parameter to pass on to the function.
+ * @returns Whether or not the hook was added successfully. 
+ */

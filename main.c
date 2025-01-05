@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/05 17:21:15 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/05 17:52:05 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@
 // 	return (0);
 // }
 
+// affiche la fenetre
 int main(void)
 {
+	// initialise mlx42 et creer une fenetre de 800*600
     mlx_t* mlx = mlx_init(800, 600, "so_long", false);
     if (!mlx)
     {
@@ -41,8 +43,18 @@ int main(void)
 		printf("Error\n");
         return (1);
     }
-	//ajouter hook ici 
-
+	//ajouter loop hook ici pour afficher les sprites 
+	
+	// charger l'image png
+	mlx_texture_t *img = mlx_load_png("rabit.png");
+	if (!img)
+	{
+    	printf("Erreur lors du chargement de l'image\n");
+    	return (1);  // Quitter si l'image ne peut pas être chargée	
+	}
+	
+	// affiche l'image dans la fenetre a la position (0.0)
+	mlx_image_to_window(mlx, img, 0, 0);
 	
     // Démarrer la boucle d'événements
     mlx_loop(mlx);
@@ -52,7 +64,6 @@ int main(void)
     return (0);
 }
 
-// char	**map = recupere la totalite de la map
 // //recuperer la map.ber = ouvrir , lire, traiter le contenu de la map
 // // une ligne = un node
 // // mettre dans une liste chainee 
