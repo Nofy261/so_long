@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/04 16:13:30 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/05 16:36:28 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_horizontal_walls(char *line)
 }
 
 // creer une fct qui verifie que les bords a gauche et a droite est bien  = 1
-int check_vertical_walls(t_map *map)
+int check_vertical_walls(t_game *map)
 {
 	// !!! syntaxe de structure 
 	// map[0][0] = 1 et map[0][size - 1] = 1;
@@ -39,7 +39,7 @@ int check_vertical_walls(t_map *map)
 }
 
 // Verifie que c'est rectangle
-int check_form(t_map *map)
+int check_form(t_game *map)
 {
 	// taille de la hauteur < taille de largeur = valide sinon erreur; 
 	// les lignes ont la meme longueur
@@ -99,46 +99,44 @@ int validate_map_elements(char *map) // plutot char **map??? donc rajouter la ha
 // verifie que C , E, P n'est pas entoure que des murs
 
 
-typedef struct s_game
-{
-	char				**map;
-	char				**mapcopy;
-	int					row;
-	int					colum;
-	int					move_x;
-	int					move_y;	
 
-	// int					count_player;
-	// int					count_collect;
-	// int					count_moves;
-	// int					count_exit;
-}						t_game;
-
-void	flood_fill(t_game *game, int move_x, int move_y)
-{
-	if (move_x < 0 || move_y < 0 || move_x >= game->colum
-		|| move_y >= game->row || game->mapcopy[move_x][move_y] == '1'
-			|| game->mapcopy[move_x][move_y] == 'X')
-		return ;
-	if (((game->mapcopy[move_x + 1][move_y] == 'E')
-		|| (game->mapcopy[move_x - 1][move_y] == 'E'))
-		&& ((game->mapcopy[move_x][move_y + 1] == '1')
-			|| (game->mapcopy[move_x][move_y - 1] == '1')))
-		return ;
-	if (((game->mapcopy[move_x][move_y + 1] == 'E')
-		|| (game->mapcopy[move_x][move_y - 1] == 'E'))
-		&& ((game->mapcopy[move_x + 1][move_y] == '1')
-		|| (game->mapcopy[move_x - 1][move_y] == '1')))
-		return ;
-	if (game->mapcopy[move_x][move_y] == 'E' ||
-		game->mapcopy[move_x][move_y] == 'C')
-		game->mapcopy[move_x][move_y] = '0';
-	game->mapcopy[move_x][move_y] = 'X';
-	flood_fill(game, move_x - 1, move_y);
-	flood_fill(game, move_x + 1, move_y);
-	flood_fill(game, move_x, move_y - 1);
-	flood_fill(game, move_x, move_y + 1);
-}
+// void	flood_fill(t_game *game, int move_x, int move_y)
+// {
+// 	if (move_x < 0 || move_y < 0 || move_x >= game->colum
+// 		|| move_y >= game->row || game->mapcopy[move_x][move_y] == '1'
+// 			|| game->mapcopy[move_x][move_y] == 'X')
+// 		return ;
+// 	if (((game->mapcopy[move_x + 1][move_y] == 'E')
+// 		|| (game->mapcopy[move_x - 1][move_y] == 'E'))
+// 		&& ((game->mapcopy[move_x][move_y + 1] == '1')
+// 			|| (game->mapcopy[move_x][move_y - 1] == '1')))
+// 		return ;
+// 	if (((game->mapcopy[move_x][move_y + 1] == 'E')
+// 		|| (game->mapcopy[move_x][move_y - 1] == 'E'))
+// 		&& ((game->mapcopy[move_x + 1][move_y] == '1')
+// 		|| (game->mapcopy[move_x - 1][move_y] == '1')))
+// 		return ;
+// 	if (game->mapcopy[move_x][move_y] == 'E' ||
+// 		game->mapcopy[move_x][move_y] == 'C')
+// 		game->mapcopy[move_x][move_y] = '0';
+// 	game->mapcopy[move_x][move_y] = 'X';
+// 	flood_fill(game, move_x - 1, move_y);
+// 	flood_fill(game, move_x + 1, move_y);
+// 	flood_fill(game, move_x, move_y - 1);
+// 	flood_fill(game, move_x, move_y + 1);
+// }
 
 // bool mlx_resize_image(mlx_image_t* img, uint32_t nwidth, uint32_t nheight); (a proteger si jamais un echec)
+
+// flood_fill met toute la carte a 1 : dessine le chemin valide.
+// - a la position P : mettre a 1.
+// - regarder en haut : si c'est 0 , on le transforme en 1, si c'est 1 on regarde a droite, puis en bas et a gauche.
+// - regarder a droite : si c'est 0 , on le transforme en 1, si c'est 1 on regarde en haut, si c'est 1 en haut on regarde a droite.
+// - regarder en bas : si c'est 0 , on le transforme en 1, si c'est 1 on regarde .
+// - regarder a gauche : si c'est 0 , on le transforme en 1, si c'est 1 on regarde .
+// tant qu'on trouve 0 on continue a explorer . La recursivite s'arrete quand il n'y a plus que des 1 et retourne a celui d'avant et ainsi de suite.
+
+// Apres avoir passer flood fill, on verifier la map ligne par ligne , s'il reste des C ou 0 , la carte n'est pas valide car cela veut dire que l'on a pas tout collectee.
+
+// une fois la carte valide , on commence a deplacer le personnage.
 

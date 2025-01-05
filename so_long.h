@@ -6,35 +6,39 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/04 09:13:19 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/05 17:01:12 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "MLX42/include/MLX42/MLX42.h"
+//# include "MLX42/include/MLX42/MLX42.h"
+# include <MLX42/MLX42.h>
 # include "get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
 
-typedef struct s_map
+typedef struct s_game
 {
-	char **map; // la carte 2D
+	char	**map; // la carte 2D
+	char	**mapcopy;
 	int		width; // largeur
 	int		height; // hauteur
+	int		row;
+	int		colum;
+	int		move_x; //pos_x
+	int		move_y; //pos_y
 
-}				t_map;
+	// int					count_player;
+	// int					count_collect;
+	// int					count_moves;
+	// int					count_exit;
+	
 
-
-
-// typedef struct pos_s
-// {
-// 	int		x;
-// 	int		y;
-// }				t_pos;
+}				t_game;
 
 
 
