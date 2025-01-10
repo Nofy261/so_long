@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/10 20:50:20 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/10 22:25:42 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ typedef struct s_game
 	int		move_x; //pos_x
 	int		move_y; //pos_y
 
-	// int					count_p;
-	// int					count_c;
-	// int					count_e;
-	// int					count_moves;
+	int					count_p;
+	int					count_c;
+	int					count_e;
+	int					count_moves;
 	
 
 }				t_game;
@@ -46,7 +46,7 @@ void	*ft_memset(void *s, int c, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 
-int 	open_map(const char *path);
+int open_map(const char *path, t_game *game);
 void	verif_extension_ber(t_game *game, char **argv);
 
 
