@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/05 17:52:05 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:09:56 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,26 @@ int main(void)
     }
 	//ajouter loop hook ici pour afficher les sprites 
 	
-	// charger l'image png
-	mlx_texture_t *img = mlx_load_png("rabit.png");
-	if (!img)
+	//mlx_texture_t* mlx_load_png(const char* path);
+	// charger l'image en tant que texture
+	mlx_texture_t* texture = mlx_load_png("pictures/rabit.png");
+	if (!texture)
 	{
-    	printf("Erreur lors du chargement de l'image\n");
-    	return (1);  // Quitter si l'image ne peut pas être chargée	
+		printf("Error de chargement de la texture\n");
+		return(1);
+	}
+
+	// mlx_image_t* mlx_texture_to_image(mlx_t* mlx, mlx_texture_t* texture);
+	// convertir la texture en une image mlx 
+	mlx_image_t *image = mlx_texture_to_image(mlx, texture);
+	if (!image)
+	{
+		printf("Error de conversion en image\n");
+		return(1);
 	}
 	
 	// affiche l'image dans la fenetre a la position (0.0)
-	mlx_image_to_window(mlx, img, 0, 0);
+	mlx_image_to_window(mlx, image, 0, 0);
 	
     // Démarrer la boucle d'événements
     mlx_loop(mlx);
@@ -63,6 +73,7 @@ int main(void)
     mlx_terminate(mlx);
     return (0);
 }
+
 
 // //recuperer la map.ber = ouvrir , lire, traiter le contenu de la map
 // // une ligne = un node
