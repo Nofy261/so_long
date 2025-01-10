@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/10 15:27:18 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:38:56 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int main(int argc, char **argv)
 	// Parsing
 	(void)argv;
 	int read_map;
-	int fd;
-	char *map;
-	map = NULL;
+	//int fd;
+	//char *map;
+	//map = NULL;
 	t_game *game;
 	
 	if (argc != 2)
@@ -32,14 +32,13 @@ int main(int argc, char **argv)
 	game = ft_calloc(sizeof(t_game), 1);
 	// verif ???
 
-	fd = open("map.ber", O_RDONLY);
-	if (!fd)
-	{
-		ft_putstr("Error, map cant'be opened or read\n");
-		return (1);
-	}
+	//fd = open("map.ber", O_RDONLY);
+	//if (!fd)
+	//{
+	//	ft_putstr("Error, map cant'be opened or read\n");
+	//	return (1);
+	//}
 	read_map = open_map(fd, map);
-	
 
 	//check_horizontal_walls();
 
