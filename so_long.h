@@ -6,14 +6,13 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/10 15:18:49 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:53:49 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-//# include "MLX42/include/MLX42/MLX42.h"
 # include <MLX42/MLX42.h>
 # include "get_next_line.h"
 # include <stdlib.h>
@@ -44,6 +43,7 @@ typedef struct s_game
 int	ft_putstr(char *str);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memset(void *s, int c, size_t n);
-int open_map(int fd, char *map);
+int open_map(const char *path);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

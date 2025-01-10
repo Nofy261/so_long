@@ -6,45 +6,48 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/10 15:38:56 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:04:12 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-//#include <MLX42/MLX42.h>
-//#include <stdio.h>
+
+static void	is_pointber(t_game *game, int i, char **argv)
+{
+	if ((i >= 4 && ft_strncmp(&argv[1][i - 3], ".ber", 4)))
+	{
+		free(game);
+		ft_putstr("Error: Invalid file extension\n");
+		exit(EXIT_FAILURE);
+	}
+}
 
 int main(int argc, char **argv)
 {
-	// Parsing
-	(void)argv;
-	int read_map;
-	//int fd;
-	//char *map;
-	//map = NULL;
-	t_game *game;
-	
-	if (argc != 2)
-	{
-		ft_putstr("Error, number of arguments is not valid\n");
-		return (1);
-	}
-	game = ft_calloc(sizeof(t_game), 1);
-	// verif ???
+    t_game *game;
+	int 	i;
 
-	//fd = open("map.ber", O_RDONLY);
-	//if (!fd)
-	//{
-	//	ft_putstr("Error, map cant'be opened or read\n");
-	//	return (1);
-	//}
-	read_map = open_map(fd, map);
-
-	//check_horizontal_walls();
-
-
+	i = ft_strlen(argv[1]) - 1;
+    if (argc != 2)
+    {
+        ft_putstr("Error: Invalid argument\n");
+        return (1);
+    }
+    game = ft_calloc(sizeof(t_game), 1);
+    if (!game)
+    {
+        ft_putstr("Error: Memory allocation failed\n");
+        return (1);
+    }
+	is_pointber(game, i, argv);
+    if (open_map(argv[1]) != 0)
+    {
+        free(game);
+        return (1);
+    }
+    free(game);
+    return (0);
 }
-
 
 
 
