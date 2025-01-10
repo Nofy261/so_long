@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 14:08:07 by nolecler          #+#    #+#              #
-#    Updated: 2025/01/10 20:47:56 by nolecler         ###   ########.fr        #
+#    Updated: 2025/01/10 22:50:47 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FSRCS = main.c \
 		utils.c \
 		open_map.c \
 		parsing.c \
+		check_pec.c \
 
 OFILES = $(FSRCS:.c=.o)
 

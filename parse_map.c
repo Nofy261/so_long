@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/10 20:38:31 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/10 22:42:11 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,37 +99,6 @@ int	check_horizontal_walls(char *line)
 // 	return (0);
 // }
 
-// //verifie que P, E, C, sont bien present dans la carte : Mettre cette verification en 1er
-// // verifier le tableau entier et non seulement ligne par ligne char **map ou char *map??
-
-// int validate_map_elements(char *map) // plutot char **map??? donc rajouter la hauteur en parametre
-// {
-// 	int	i;
-// 	int	count_p;
-// 	int	count_e;
-// 	int	count_c;
-
-// 	i = 0;
-// 	count_p = 0;
-// 	count_e = 0;
-// 	count_c = 0;
-	
-// 	//pour chaque ligne de la carte
-// 	// pour chaque caractere de la ligne
-// 	while (map[i]) // la on parcours que la premiere ligne de la carte
-// 	{
-// 		if (map[i] == 'P')
-// 			count_p++;
-// 		else if (map[i] == 'E')
-// 			count_e++;
-// 		else if (map[i] == 'C')
-// 			count_c++;
-// 		i++;
-// 	}
-// 	if (count_p != 1 || count_e != 1 || count_c < 1)
-// 		return (1); // + message d'erreur ou pas??
-// 	return (0);
-// }
 
 // Verifie qu'il y a un chemin valide cad on peut aller de P a E tout en collectant les C = flood fill (recursion)
 // si C ou P ou E est entoure de mur = carte invalide

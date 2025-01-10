@@ -6,79 +6,11 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/10 22:28:57 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/10 22:49:16 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// int validate_map_elements(t_game *game, int height) // int height a mettre dans le prototype ou pas?
-// {
-// 	int	i;
-//     int j;
-    
-// 	i = 0;
-//     j = 0;
-// 	game->count_p = 0;
-// 	game->count_e = 0;
-// 	game->count_c = 0;
-//     while (i < height)
-//     {
-//         while (game->map[i][j])
-// 	    {
-// 		    if (game->map[i] == 'P')
-// 			    game->count_p++;
-// 		    else if (game->map[i] == 'E')
-// 			    game->count_e++;
-// 		    else if (game->map[i] == 'C')
-// 			    game->count_c++;
-// 		    j++;
-// 	    }
-//         i++;
-//     }
-// 	if (game->count_p != 1 || game->count_e != 1 || game->count_c < 1)
-//     {
-//         ft_putstr("Error: Number of element is invalid\n");
-// 		return (1); // + message d'erreur ou pas??
-//     }
-// 	return (0);
-// }
-
-
-
-
-int check_collectible(t_game *game)
-{
-    int i;
-    int j;
-
-    j = 0;
-    // parcours un tableau
-    // if (!game || !game->map)
-    // {
-    //     ft_putstr("Error: Invalid map or game structure.\n");
-    //     return (1);
-    // }
-    while (game->map[j])
-    {
-        i = 0;
-        while (game->map[j][i])
-        {
-            if (game->map[j][i] == 'C')
-                game->count_c++;        
-            i++;
-        }
-        j++;
-    }
-    if (game->count_c < 1)
-    {
-        ft_putstr("Error: Missing collectible");
-        return (1);
-    }
-    return (0);  
-}
-
-#include <stdio.h>
 
 int main(int argc, char **argv)
 {
@@ -104,11 +36,11 @@ int main(int argc, char **argv)
     }
     if (check_collectible(game) == 1)
         return (1);
-    
+    if (check_player(game) == 1)
+        return (1);
+    if (check_exit(game) == 1)
+        return (1);
 
-
-
-    
     free(game);
     return (0);
 }
