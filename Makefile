@@ -6,17 +6,18 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 14:08:07 by nolecler          #+#    #+#              #
-#    Updated: 2025/01/10 16:09:59 by nolecler         ###   ########.fr        #
+#    Updated: 2025/01/10 20:47:56 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 FSRCS = main.c \
-		get_next_line.c \
-		get_next_line_utils.c \
+		get_next_line/get_next_line.c \
+		get_next_line/get_next_line_utils.c \
 		utils.c \
 		open_map.c \
+		parsing.c \
 
 OFILES = $(FSRCS:.c=.o)
 

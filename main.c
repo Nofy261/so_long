@@ -6,28 +6,46 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/10 17:04:12 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/10 20:52:50 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	is_pointber(t_game *game, int i, char **argv)
+int validate_map_elements(char *map) // plutot char **map??? donc rajouter la hauteur en parametre
 {
-	if ((i >= 4 && ft_strncmp(&argv[1][i - 3], ".ber", 4)))
+	int	i;
+	int	count_p;
+	int	count_e;
+	int	count_c;
+
+	i = 0;
+	count_p = 0;
+	count_e = 0;
+	count_c = 0;
+	
+	//pour chaque ligne de la carte
+	// pour chaque caractere de la ligne
+	while (map[i]) // la on parcours que la premiere ligne de la carte
 	{
-		free(game);
-		ft_putstr("Error: Invalid file extension\n");
-		exit(EXIT_FAILURE);
+		if (map[i] == 'P')
+			count_p++;
+		else if (map[i] == 'E')
+			count_e++;
+		else if (map[i] == 'C')
+			count_c++;
+		i++;
 	}
+	if (count_p != 1 || count_e != 1 || count_c < 1)
+		return (1); // + message d'erreur ou pas??
+	return (0);
 }
+
 
 int main(int argc, char **argv)
 {
     t_game *game;
-	int 	i;
 
-	i = ft_strlen(argv[1]) - 1;
     if (argc != 2)
     {
         ft_putstr("Error: Invalid argument\n");
@@ -39,12 +57,20 @@ int main(int argc, char **argv)
         ft_putstr("Error: Memory allocation failed\n");
         return (1);
     }
-	is_pointber(game, i, argv);
+	verif_extension_ber(game, argv);
     if (open_map(argv[1]) != 0)
     {
         free(game);
         return (1);
     }
+    // Parsing map 
+    
+
+
+
+
+
+    
     free(game);
     return (0);
 }

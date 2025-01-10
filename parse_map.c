@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/10 14:52:59 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/10 20:38:31 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,47 +26,6 @@ int	check_horizontal_walls(char *line)
 	}
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -131,8 +90,10 @@ int	check_horizontal_walls(char *line)
 // 	while (map[i])
 // 	{
 // 		if (map[i] != '0' && map[i] != 'P' && map[i] != 'C' && map[i] != 'E' && map[i] != '1')
-// 			return (1); // erreur 
-// 			// afficher un message d'erreur ou pas??
+//		{
+//			ft_putstr("Error: Unknown element\n");
+// 			return (1);
+//		}
 // 		i++;
 // 	}
 // 	return (0);
