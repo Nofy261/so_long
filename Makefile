@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 14:08:07 by nolecler          #+#    #+#              #
-#    Updated: 2025/01/11 09:23:04 by nolecler         ###   ########.fr        #
+#    Updated: 2025/01/11 11:48:11 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,40 +30,37 @@ CFLAGS = -Wall -Werror -Wextra -I./MLX42/include
 MLXFLAGS = -ldl -lX11 -lglfw -lm -lz -lbsd -lXext ./MLX42/build/libmlx42.a -pthread
 
 all: mlx $(NAME)
-
-# mlx :
-#     @if ls | grep -q "MLX42"; then \
-#         clear; \
-#         echo "\033[32;47;1m** MLX42 already exist **\033[1;m"; \
-#     else \
-#         git clone https://github.com/codam-coding-college/MLX42.git; \
-#         cmake ./MLX42 -B ./MLX42/build; \
-#         make -C ./MLX42/build --no-print-directory -j4; \
-#         make --directory ./MLX42/build; \
-#     fi
+	@echo "\033[32mCompilation successful!\033[0m"
 
 mlx:
 	@if [ -d "./MLX42" ]; then \
-		echo "\033[32;47;1m** MLX42 already exists **\033[1;m"; \
+		echo "\033[32;1mMLX42 already exists.\033[0m"; \
 	else \
-		git clone https://github.com/codam-coding-college/MLX42.git; \
-		cmake ./MLX42 -B ./MLX42/build; \
-		cmake --build ./MLX42/build -j4; \
+		echo "\033[33;1mCloning and building MLX42...\033[0m"; \
+		git clone https://github.com/codam-coding-college/MLX42.git > /dev/null 2>&1; \
+		cmake ./MLX42 -B ./MLX42/build > /dev/null 2>&1; \
+		cmake --build ./MLX42/build -j4 > /dev/null 2>&1; \
+		echo "\033[32;1mMLX42 built successfully.\033[0m"; \
 	fi
 
 $(NAME): $(OFILES)
-	$(CC) $(CFLAGS) $(OFILES) $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OFILES) $(MLXFLAGS) -o $(NAME)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(OFILES)
+	@rm -f $(OFILES)
+	@echo "\033[34mObject files cleaned.\033[0m"
 
 cleanmlx:
-	rm -rf MLX42
+	@rm -rf MLX42
+	@echo "\033[34mMLX42 cleaned.\033[0m"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "\033[34mBinary and object files cleaned.\033[0m"
 
-re: fclean $(NAME)
+re: fclean all
 
-# .PHONY: all clean fclean re
 .PHONY: all clean fclean re mlx
