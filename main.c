@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/11 11:37:08 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/11 17:23:24 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ int main(int argc, char **argv)
         return (1);
     if (check_exit(game) == 1)
         return (1);
+    if (check_form(game) == 1)
+        return (1);
     if (check_horizontal_walls(game->map[0]) == 1 || 
         check_horizontal_walls(game->map[game->height - 1]) == 1)
         return (1);
     if (check_vertical_walls(game) == 1)
         return (1);
-    
     free(game);
     return (0);
 }

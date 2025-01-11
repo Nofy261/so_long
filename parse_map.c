@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/11 11:38:23 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/11 17:34:48 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,51 @@ int check_vertical_walls(t_game *game)
     return (0);
 }
 
+int check_form(t_game *game)
+{   
+    int  i;
+    int  j;
+    int  size;
+
+    i = 0;
+    j = 0;
+    while (game->map[i][j])
+        j++;
+    size = j;
+    i = 0;
+    while (i < game->height)
+    {
+        j = 0;
+        while (game->map[i][j])
+            j++;
+        if (j != size)
+        {
+            ft_putstr("Error: Invalid form of map\n");
+            return (1);
+        }
+        i++;
+    }
+    return (0);
+}
 
 
 
-// Verifie que c'est rectangle
-// int check_form(t_game *map)
+// largeur de la carte au cas ou c'est necessaire
+// int	get_map_width(char *line)
 // {
-// 	// taille de la hauteur < taille de largeur = valide sinon erreur; 
-// 	// les lignes ont la meme longueur
+// 	int	i;
+//     int width;
+
+//     width = 0;
+// 	i = 0;
+// 	while (line[i])
+// 		i++;
+//     width = i + 1;
+// 	return (width);
 // }
+
+
+
 
 // // verifie que la carte ne contient pas autre chose que P , E, C
 // int check_elements(char *map) // a renommer

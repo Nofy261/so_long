@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/11 11:07:04 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/11 16:32:58 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ typedef struct s_game
 	char	**mapcopy;
 	int		width; // largeur
 	int		height; // hauteur
-	int		row;
-	int		colum;
+
 	int		move_x; //pos_x
 	int		move_y; //pos_y
 
 	int					count_p;
 	int					count_c;
 	int					count_e;
-	int					count_moves;
 }				t_game;
 
 /* Utils */
@@ -56,5 +54,6 @@ int check_exit(t_game *game);
 
 int	check_horizontal_walls(char *line);
 int check_vertical_walls(t_game *game);
+int check_form(t_game *game);
 
 #endif
