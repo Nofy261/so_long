@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/11 17:34:48 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/11 18:00:13 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int check_form(t_game *game)
     while (game->map[i][j])
         j++;
     size = j;
-    i = 0;
     while (i < game->height)
     {
         j = 0;
@@ -84,6 +83,34 @@ int check_form(t_game *game)
     }
     return (0);
 }
+
+
+int check_invalid_elements(t_game *game)
+{
+	int	i;
+    int j;
+
+    j = 0;
+	i = 0;
+    while (i < game->height)
+    {
+        j = 0;
+	    while (game->map[i][j])
+	    {
+		    if (game->map[i][j] != '0' && game->map[i][j] != 'P' && game->map[i][j] != 'C' && game->map[i][j] != 'E' && game->map[i][j] != '1')
+		    {
+		    	ft_putstr("Error: Unknown element\n");
+			    return (1);
+		    }
+		    j++;
+        }
+        i++;
+	}
+	return (0);
+}
+
+
+
 
 
 
@@ -103,25 +130,6 @@ int check_form(t_game *game)
 
 
 
-
-// // verifie que la carte ne contient pas autre chose que P , E, C
-// int check_elements(char *map) // a renommer
-// {
-// 	// parcourir la map jusqu a la fin '\0' et verifier s'il rencontre un P , E, C = valide sinon erreur
-// 	int	i;
-
-// 	i = 0;
-// 	while (map[i])
-// 	{
-// 		if (map[i] != '0' && map[i] != 'P' && map[i] != 'C' && map[i] != 'E' && map[i] != '1')
-//		{
-//			ft_putstr("Error: Unknown element\n");
-// 			return (1);
-//		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
 
 
 // Verifie qu'il y a un chemin valide cad on peut aller de P a E tout en collectant les C = flood fill (recursion)

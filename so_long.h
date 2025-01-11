@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/11 16:32:58 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/11 17:55:13 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int check_exit(t_game *game);
 int	check_horizontal_walls(char *line);
 int check_vertical_walls(t_game *game);
 int check_form(t_game *game);
+int check_invalid_elements(t_game *game);
 
 #endif

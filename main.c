@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/11 17:23:24 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/11 17:55:05 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int main(int argc, char **argv)
         free(game);
         return (1);
     }
+    if (check_invalid_elements(game) == 1)
+        return (1);
     if (check_collectible(game) == 1)
         return (1);
     if (check_player(game) == 1)
