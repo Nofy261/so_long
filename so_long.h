@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/10 22:50:24 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:07:04 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ typedef struct s_game
 	int					count_c;
 	int					count_e;
 	int					count_moves;
-	
-
 }				t_game;
 
 /* Utils */
@@ -54,5 +52,9 @@ int check_collectible(t_game *game);
 int check_player(t_game *game);
 int check_exit(t_game *game);
 
+/* parse_map */
+
+int	check_horizontal_walls(char *line);
+int check_vertical_walls(t_game *game);
 
 #endif

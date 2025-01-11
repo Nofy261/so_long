@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/10 22:42:11 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:38:23 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,59 +21,47 @@ int	check_horizontal_walls(char *line)
 	while (line[i])
 	{
 		if (line[i] != '1')
+		{
+			ft_putstr("Error: horizontal wall is not surrounded by walls\n");
 			return (1);
+		}
 		i++;
 	}
 	return (0);
 }
 
+int check_vertical_walls(t_game *game)
+{
+    int j;
+    int last_col;
+
+    j = 0;
+    last_col = ft_strlen(game->map[0]) - 1;
+    while (game->map[j])
+    {
+        if (game->map[j][0] != '1')
+        {
+            ft_putstr("Error: Left wall is not surrounded by walls\n");
+            //ft_free(game->map);
+            free(game);
+            return (1);
+        }
+        if (game->map[j][last_col] != '1')
+        {
+            ft_putstr("Error: Right wall is not surrounded by walls\n");// Ne s'affiche pas en erreur a revoir
+            //ft_free(game->map);
+            free(game);
+            return (1);
+        }
+        j++;
+    }
+    return (0);
+}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // creer une fct qui verifie que les bords a gauche et a droite est bien  = 1
-// int check_vertical_walls(t_game *map)
-// {
-// 	// !!! syntaxe de structure 
-// 	// map[0][0] = 1 et map[0][size - 1] = 1;
-// 	// j'incremente un int i de 0 jusqu'a la hauteur et je verifie si i = 1 sinon erreur et la carte n'est pas valide 
-// 	//  cad tant que i < height ; i++
-// }
-
-// // Verifie que c'est rectangle
+// Verifie que c'est rectangle
 // int check_form(t_game *map)
 // {
 // 	// taille de la hauteur < taille de largeur = valide sinon erreur; 
@@ -136,7 +124,7 @@ int	check_horizontal_walls(char *line)
 
 // flood_fill met toute la carte a 1 : dessine le chemin valide.
 // - a la position P : mettre a 1.
-// - regarder en haut : si c'est 0 , on le transforme en 1, si c'est 1 on regarde a droite, puis en bas et a gauche.
+// - regarder en haut : sint	check_horizontal_walls(char *line)i c'est 0 , on le transforme en 1, si c'est 1 on regarde a droite, puis en bas et a gauche.
 // - regarder a droite : si c'est 0 , on le transforme en 1, si c'est 1 on regarde en haut, si c'est 1 en haut on regarde a droite.
 // - regarder en bas : si c'est 0 , on le transforme en 1, si c'est 1 on regarde .
 // - regarder a gauche : si c'est 0 , on le transforme en 1, si c'est 1 on regarde .
