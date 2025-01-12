@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:56:21 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/11 10:29:12 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:54:09 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int get_map_height(const char *path)
     height = 0;
     fd = open(path, O_RDONLY);
     if (fd < 0)
-        return (-1); // Erreur si le fichier ne peut pas être ouvert
+        return (-1); // Message a rajouter?? Erreur si le fichier ne peut pas être ouvert
     while ((line = get_next_line(fd)) != NULL)
     {
         height++;
@@ -58,7 +58,7 @@ int open_map(const char *path, t_game *game)
     fd = open(path, O_RDONLY);
     if (fd < 0)
     {
-        ft_putstr("Error: Map can't be opened or read\n");
+        ft_putstr("Error opening map\n");
         return (1);
     }
     game->map = ft_calloc(game->height + 1, sizeof(char *));
@@ -84,3 +84,5 @@ int open_map(const char *path, t_game *game)
     }
     return (0);
 }
+
+

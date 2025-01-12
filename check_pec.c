@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:48:06 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/11 10:18:09 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/12 19:01:51 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ int check_player(t_game *game)
         while (game->map[j][i])
         {
             if (game->map[j][i] == 'P')
-                game->count_p++;        
+            {
+                game->player_x = i; //rajout
+                game->player_y = j;// rajout
+                game->count_p++;
+            }    
             i++;
         }
         j++;

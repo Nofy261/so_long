@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/11 17:55:05 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/12 19:01:16 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int main(int argc, char **argv)
         return (1);
     if (check_vertical_walls(game) == 1)
         return (1);
+    if (validate_pathfinder(game) == 1)// rajout
+      return (1);// rajout
     free(game);
     return (0);
 }

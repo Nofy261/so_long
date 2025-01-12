@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/11 18:02:37 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/12 18:53:35 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,38 @@ typedef struct s_game
 	int		move_x; //pos_x
 	int		move_y; //pos_y
 
+	int		player_x;
+	int		player_y;
 	int					count_p;
 	int					count_c;
 	int					count_e;
 }				t_game;
+
+typedef struct s_texture
+{
+	mlx_texture_t *carot;
+	mlx_texture_t *floor;
+	mlx_texture_t *gate;
+	mlx_texture_t *rabit_end;
+	mlx_texture_t *rabit;
+	mlx_texture_t *wall;
+
+	
+} t_texture;
+
+
+typedef struct s_image
+{
+
+	mlx_image_t *carot;
+	mlx_image_t *floor;
+	mlx_image_t *gate;
+	mlx_image_t *rabit_end;
+	mlx_image_t *rabit;
+	mlx_image_t *wall;
+	
+} t_image;
+
 
 /* Utils */
 int		ft_putstr(char *str);
@@ -55,5 +83,9 @@ int	check_horizontal_walls(char *line);
 int check_vertical_walls(t_game *game);
 int check_form(t_game *game);
 int check_invalid_elements(t_game *game);
+void flood_fill(int x, int y, t_game *game);
+int validate_pathfinder(t_game *game);
+
+
 
 #endif
