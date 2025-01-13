@@ -6,12 +6,27 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/12 19:01:16 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/13 09:53:34 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// A ENLEVER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+void    print_map(t_game *game)
+{
+    int i;
+
+    i = 0; 
+    while (game->map[i])
+    {
+        printf("%s\n", game->map[i]);
+        i++;
+    }
+}
+
+
+#include <stdio.h> // A ENLEVER !!!!!!!!!!!!!!!!!!
 int main(int argc, char **argv)
 {
     t_game *game;
@@ -49,8 +64,11 @@ int main(int argc, char **argv)
         return (1);
     if (check_vertical_walls(game) == 1)
         return (1);
-    if (validate_pathfinder(game) == 1)// rajout
+    print_map(game);
+    if (validate_flood_fill(game) == 1)// rajout
       return (1);// rajout
+    printf("\n");
+    print_map(game);
     free(game);
     return (0);
 }
@@ -58,51 +76,23 @@ int main(int argc, char **argv)
 
 
 
+// char **game;
+// game = ft_calloc(sizeof(t_game), 1);
+// if (!game)
+// {
+//     ft_putstr("Error: Memory allocation failed\n");
+//     return (1);
+// }
 
 
+// mlx_texture_t* texture;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// texture = mlx_load_png("pictures/carot.png");
+// if (!texture)
+// {
+//     printf("Error de chargement de la texture\n");
+//     return(1);
+// }
 
 
 
