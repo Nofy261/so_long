@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/13 09:53:34 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/13 10:11:19 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ int main(int argc, char **argv)
 //     printf("Error de chargement de la texture\n");
 //     return(1);
 // }
-
-
 
 
 

@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/13 10:08:36 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:55:42 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# define SPRITE_PIXEL 64
 
 typedef struct s_game
 {
+	mlx_t	*mlx;
+	t_textures	textures;
+	t_images	images;
 	char	**map; // la carte 2D
 	char	**mapcopy;
 	int		width; // largeur
@@ -29,7 +33,8 @@ typedef struct s_game
 
 	int		move_x; //pos_x
 	int		move_y; //pos_y
-
+	int				x_gate;
+	int				y_gate;
 	int		player_x;
 	int		player_y;
 	int					count_p;
@@ -37,30 +42,29 @@ typedef struct s_game
 	int					count_e;
 }				t_game;
 
-typedef struct s_texture
+typedef struct s_textures
 {
-	mlx_texture_t *carot;
-	mlx_texture_t *floor;
-	mlx_texture_t *gate;
-	mlx_texture_t *rabit_end;
-	mlx_texture_t *rabit;
-	mlx_texture_t *wall;
+	mlx_texture_t *texture_carot;
+	mlx_texture_t *texture_floor;
+	mlx_texture_t *texture_gate;
+	mlx_texture_t *texture_rabit_end;
+	mlx_texture_t *texture_rabit;
+	mlx_texture_t *texture_wall;
 
 	
-} t_texture;
+} t_textures;
 
 
-typedef struct s_image
+typedef struct s_images
 {
-
-	mlx_image_t *carot;
-	mlx_image_t *floor;
-	mlx_image_t *gate;
-	mlx_image_t *rabit_end;
-	mlx_image_t *rabit;
-	mlx_image_t *wall;
+	mlx_image_t *image_carot;
+	mlx_image_t *image_floor;
+	mlx_image_t *image_gate;
+	mlx_image_t *image_rabit_end;
+	mlx_image_t *image_rabit;
+	mlx_image_t *image_wall;
 	
-} t_image;
+} t_images;
 
 
 /* Utils */
