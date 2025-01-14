@@ -6,12 +6,13 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:17:57 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/14 16:04:22 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:01:51 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+#include <stdio.h>
 // charger les textures a partir des images
 static void	init_texture(t_game *game)
 {
@@ -32,14 +33,17 @@ static void	init_texture(t_game *game)
 }
 
 // convertir les textures en images mlx pour pouvoir les afficher
-static void	convert_texture_to_image(t_game *game)
+static void	convert_texture_to_image(t_game *game) // SEG FAULT
 {
+	printf("convert texture to image1\n");
+
 	game->images.image_carot = mlx_texture_to_image(game->mlx, game->textures.texture_carot);
 	game->images.image_floor = mlx_texture_to_image(game->mlx, game->textures.texture_floor);
 	game->images.image_gate = mlx_texture_to_image(game->mlx, game->textures.texture_gate);
 	game->images.image_rabit_end = mlx_texture_to_image(game->mlx, game->textures.texture_rabit_end);
 	game->images.image_rabit = mlx_texture_to_image(game->mlx, game->textures.texture_rabit);
 	game->images.image_wall = mlx_texture_to_image(game->mlx, game->textures.texture_wall);
+	
 
 	if (!game->images.image_carot || !game->images.image_floor ||
 		!game->images.image_gate || !game->images.image_rabit_end ||
@@ -76,19 +80,26 @@ void	display_map(t_game *game)
     int j;
 
     j = 0;
+	game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height * SPRITE_PIXEL, "Rabbit Party", true);// rajout
 	init_texture(game);
+	printf("display map 2\n");
 	convert_texture_to_image(game);
+	printf("display map 3\n");
     while (game->map[j])
     {
+		printf("display map 4\n");
         i = 0;
         while (game->map[j][i])
         {
+			printf("display map 5\n");
             display_sprites_in_start_position(game, game->map[j][i], i, j);
             i++;
         }
         j++;
     }
-	mlx_image_to_window(game->mlx, game->images.image_rabit, game->player_x * SPRITE_PIXEL, game->player_y * SPRITE_PIXEL);// on affiche le P en dernier pour eviter le pb de superposition d image
+	printf("display map 6\n");
+	// on affiche le P en dernier pour eviter le pb de superposition d image
+	mlx_image_to_window(game->mlx, game->images.image_rabit, game->player_x * SPRITE_PIXEL, game->player_y * SPRITE_PIXEL);
 }
 
 //mlx_t* mlx_init(int32_t width, int32_t height, const char* title, bool resize);

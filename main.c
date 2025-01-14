@@ -6,46 +6,45 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/14 16:48:01 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:43:02 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 // A ENLEVER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-void    print_map(t_game *game)
-{
-    int i;
+// void    print_map(t_game *game)
+// {
+//     int i;
 
-    i = 0; 
-    while (game->map[i])
-    {
-        printf("%s\n", game->map[i]);
-        i++;
-    }
-}
+//     i = 0; 
+//     while (game->map[i])
+//     {
+//         printf("%s\n", game->map[i]);
+//         i++;
+//     }
+// }
 
-static void get_height_and_width(t_game *game)
-{
-    int i = 0;
-    int j = 0;
+// static void get_height_and_width(t_game *game)
+// {
+//     int i = 0;
+//     int j = 0;
 
-    while (game->map[j])
-    {
-        j = 0;
-        while (game->map[j][i])
-            i++;
-        j++;
-    }
-    game->width = j - 1;// taille de la largeur -1 pour '\0' 
-    game->height = i - 1; // taille de la hauteur
-}
+//     while (game->map[j])
+//     {
+//         j = 0;
+//         while (game->map[j][i])
+//             i++;
+//         j++;
+//     }
+//     game->width = j - 1;// taille de la largeur -1 pour '\0' 
+//     game->height = i - 1; // taille de la hauteur
+// }
 
 #include <stdio.h> // A ENLEVER !!!!!!!!!!!!!!!!!!
 int main(int argc, char **argv)
 {
     t_game *game;
-
     if (argc != 2)
     {
         ft_putstr("Error: Invalid argument\n");
@@ -58,7 +57,6 @@ int main(int argc, char **argv)
         return (1);
     }
 	verif_extension_ber(game, argv);
-    get_height_and_width(game); // rajout
     if (open_map(argv[1], game) != 0)
     {
         free(game);
@@ -79,14 +77,16 @@ int main(int argc, char **argv)
         return (1);
     if (check_vertical_walls(game) == 1)
         return (1);
-    print_map(game);
+    //print_map(game);
     if (validate_flood_fill(game) == 1)// rajout
       return (1);// rajout
-    printf("\n");
-    print_map(game);
+    //printf("\n");
+    //print_map(game);
     mlx_set_setting(MLX_STRETCH_IMAGE, true);// permet d'adapter l'image quand on retrecit l'ecran
-    game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height * SPRITE_PIXEL, "Rabbit Party", true);
+   // game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height * SPRITE_PIXEL, "Rabbit Party", true);
+    printf("je passe 9\n");
     display_map(game);
+    printf("je passe 10\n");
     free(game);
     return (0);
 }

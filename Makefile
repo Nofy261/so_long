@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 14:08:07 by nolecler          #+#    #+#              #
-#    Updated: 2025/01/14 15:45:23 by nolecler         ###   ########.fr        #
+#    Updated: 2025/01/14 17:10:32 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OFILES = $(FSRCS:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -I./MLX42/include
+CFLAGS = -Wall -Werror -Wextra -g -I./MLX42/include # -g rajout
 
 MLXFLAGS = -ldl -lX11 -lglfw -lm -lz -lbsd -lXext ./MLX42/build/libmlx42.a -pthread
 
