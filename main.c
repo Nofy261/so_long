@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/13 10:11:19 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:48:01 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,21 @@ void    print_map(t_game *game)
     }
 }
 
+static void get_height_and_width(t_game *game)
+{
+    int i = 0;
+    int j = 0;
+
+    while (game->map[j])
+    {
+        j = 0;
+        while (game->map[j][i])
+            i++;
+        j++;
+    }
+    game->width = j - 1;// taille de la largeur -1 pour '\0' 
+    game->height = i - 1; // taille de la hauteur
+}
 
 #include <stdio.h> // A ENLEVER !!!!!!!!!!!!!!!!!!
 int main(int argc, char **argv)
@@ -42,8 +57,8 @@ int main(int argc, char **argv)
         ft_putstr("Error: Memory allocation failed\n");
         return (1);
     }
-    // Parsing map 
 	verif_extension_ber(game, argv);
+    get_height_and_width(game); // rajout
     if (open_map(argv[1], game) != 0)
     {
         free(game);
@@ -53,13 +68,13 @@ int main(int argc, char **argv)
         return (1);
     if (check_collectible(game) == 1)
         return (1);
-    if (check_player(game) == 1)
-        return (1);
     if (check_exit(game) == 1)
+        return (1);
+    if (check_player(game) == 1)
         return (1);
     if (check_form(game) == 1)
         return (1);
-    if (check_horizontal_walls(game->map[0]) == 1 || 
+    if  (check_horizontal_walls(game->map[0]) == 1 || 
         check_horizontal_walls(game->map[game->height - 1]) == 1)
         return (1);
     if (check_vertical_walls(game) == 1)
@@ -69,6 +84,9 @@ int main(int argc, char **argv)
       return (1);// rajout
     printf("\n");
     print_map(game);
+    mlx_set_setting(MLX_STRETCH_IMAGE, true);// permet d'adapter l'image quand on retrecit l'ecran
+    game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height * SPRITE_PIXEL, "Rabbit Party", true);
+    display_map(game);
     free(game);
     return (0);
 }
@@ -83,19 +101,6 @@ int main(int argc, char **argv)
 //     ft_putstr("Error: Memory allocation failed\n");
 //     return (1);
 // }
-
-
-// mlx_texture_t* texture;
-
-// texture = mlx_load_png("pictures/carot.png");
-// if (!texture)
-// {
-//     printf("Error de chargement de la texture\n");
-//     return(1);
-// }
-
-
-
 
 
 
@@ -142,8 +147,6 @@ int main(int argc, char **argv)
 
 
 // //recuperer la map.ber = ouvrir , lire, traiter le contenu de la map
-// // une ligne = un node
-// // mettre dans une liste chainee 
 
 // char *map = get_next_line() // recupere ligne par ligne de la map
 

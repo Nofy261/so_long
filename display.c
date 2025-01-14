@@ -6,15 +6,15 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:17:57 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/13 16:56:05 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:04:22 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// charger les textures a partir des images
 static void	init_texture(t_game *game)
 {
-	// charger les textures a partir des images
 	game->textures.texture_carot = mlx_load_png("images/carot.png");
 	game->textures.texture_floor = mlx_load_png("images/floor.png");
 	game->textures.texture_gate = mlx_load_png("images/gate.png");
@@ -34,7 +34,6 @@ static void	init_texture(t_game *game)
 // convertir les textures en images mlx pour pouvoir les afficher
 static void	convert_texture_to_image(t_game *game)
 {
-	
 	game->images.image_carot = mlx_texture_to_image(game->mlx, game->textures.texture_carot);
 	game->images.image_floor = mlx_texture_to_image(game->mlx, game->textures.texture_floor);
 	game->images.image_gate = mlx_texture_to_image(game->mlx, game->textures.texture_gate);
@@ -51,81 +50,47 @@ static void	convert_texture_to_image(t_game *game)
 	}
 }
 
-// affiche l'image dans la fenetre a la position (0.0)
 // mlx_image_to_window(mlx, image, 0, 0);
 // int32_t mlx_image_to_window(mlx_t* mlx, mlx_image_t* img, int32_t x, int32_t y);
 // int32_t conserve la valeur precis des coordonnees (y,x) de l'image;
-
-// static void display_image_to_window(t_game *game, int x, int y)
-// {
-// 	mlx_image_to_window(game->mlx, game->images.image_carot, x, y);
-// 	mlx_image_to_window(game->mlx, game->images.image_floor, x, y);
-// 	mlx_image_to_window(game->mlx, game->images.image_gate, x, y);
-// 	mlx_image_to_window(game->mlx, game->images.image_rabit_end, x, y);
-// 	mlx_image_to_window(game->mlx, game->images.image_rabit, x, y);
-// 	mlx_image_to_window(game->mlx, game->images.image_wall, x, y);
+// quand P arrive sur C, on enleve C
+// mettre le sol en premier , ensuite le collectible
+// mlx init = pont entre le programme et la fenetre
 
 
-// 	if (mlx_image_to_window(game->mlx, game->images.image_carot, x, y) == -1 ||
-// 		mlx_image_to_window(game->mlx, game->images.image_floor, x, y) == -1 ||
-// 		mlx_image_to_window(game->mlx, game->images.image_gate, x, y) == -1 ||
-// 		mlx_image_to_window(game->mlx, game->images.image_rabit_end, x, y) == -1 ||
-// 		mlx_image_to_window(game->mlx, game->images.image_rabit, x, y) == -1 ||
-// 		mlx_image_to_window(game->mlx, game->images.image_wall, x, y) == -1)
-// 	{
-// 		ft_putstr("Error: failed to draw carrot image\n");
-// 		exit(EXIT_FAILURE);
-// 	}
-// }
-
-void	display_element_at_position(t_game *game, char element, int x, int y)
+// fonction qui met tous les sprites a leur position de depart sauf le Personnage
+void	display_sprites_in_start_position(t_game *game, char element, int x, int y)
 {
-	mlx_image_to_window(game->mlx, game->images.image_floor, x, y);
+	mlx_image_to_window(game->mlx, game->images.image_floor, x * SPRITE_PIXEL, y * SPRITE_PIXEL); // mettre le fond(les zeros) au depart 
 	if (element == 'C')
-		mlx_image_to_window(game->mlx, game->images.image_carot, x, y);
-	else if (element == 'P')
-	{
-		mlx_image_to_window(game->mlx, game->images.image_rabit, x, y);
-		game->x = x;
-		game->y = y;
-	}
+		mlx_image_to_window(game->mlx, game->images.image_carot, x * SPRITE_PIXEL, y * SPRITE_PIXEL);
 	else if (element == '1')
-		mlx_image_to_window(game->mlx, game->images.image_wall, x, y);
+		mlx_image_to_window(game->mlx, game->images.image_wall, x * SPRITE_PIXEL, y * SPRITE_PIXEL);
 	else if (element == 'E')
-	{
-		mlx_image_to_window(game->mlx, game->images.image_gate, x, y);
-		game->x_gate = x;
-		game->y_gate = y;
-	}
+		mlx_image_to_window(game->mlx, game->images.image_gate, game->gate_x * SPRITE_PIXEL, game->gate_y * SPRITE_PIXEL);
 }
 
+void	display_map(t_game *game)
+{
+    int i;
+    int j;
 
+    j = 0;
+	init_texture(game);
+	convert_texture_to_image(game);
+    while (game->map[j])
+    {
+        i = 0;
+        while (game->map[j][i])
+        {
+            display_sprites_in_start_position(game, game->map[j][i], i, j);
+            i++;
+        }
+        j++;
+    }
+	mlx_image_to_window(game->mlx, game->images.image_rabit, game->player_x * SPRITE_PIXEL, game->player_y * SPRITE_PIXEL);// on affiche le P en dernier pour eviter le pb de superposition d image
+}
 
-// void	display_sprites_to_the_map(t_game *game, int x, int y)
-// {
-// 	game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height * SPRITE_PIXEL, "So_long", true);
-// 	if (!game->mlx)
-// 		exit(EXIT_FAILURE);
-// 	init_texture(game);
-// 	convert_texture_to_image(game);
-// 	display_image_to_window(game, x, y);
-	
-	
-// }
-
-
-
-
-
-/**
- * Initializes a new MLX42 Instance.
- * 
- * @param[in] width The width of the window.
- * @param[in] height The height of the window.
- * @param[in] title The title of the window.
- * @param[in] resize Enable window resizing.
- * @returns Ptr to the MLX handle or null on failure.
- */
 //mlx_t* mlx_init(int32_t width, int32_t height, const char* title, bool resize);
 
 

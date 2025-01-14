@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:48:06 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/13 08:24:34 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:45:04 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int check_player(t_game *game)
         {
             if (game->map[j][i] == 'P')
             {
-                game->player_x = i; //rajout
-                game->player_y = j;// rajout
+                game->player_x = i;
+                game->player_y = j;
                 game->count_p++;
-            }    
+            }  
             i++;
         }
         j++;
@@ -65,6 +65,7 @@ int check_player(t_game *game)
     }
     return (0);
 }
+
 
 int check_exit(t_game *game)
 {
@@ -78,7 +79,11 @@ int check_exit(t_game *game)
         while (game->map[j][i])
         {
             if (game->map[j][i] == 'E')
-                game->count_e++;        
+            {
+                game->gate_x = i;
+                game->gate_y = j;
+                game->count_e++;
+            }        
             i++;
         }
         j++;
@@ -90,3 +95,5 @@ int check_exit(t_game *game)
     }
     return (0);
 }
+
+

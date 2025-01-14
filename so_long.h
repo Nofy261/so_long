@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/13 16:55:42 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:24:36 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,6 @@
 # include <stdio.h>
 # include <fcntl.h>
 # define SPRITE_PIXEL 64
-
-typedef struct s_game
-{
-	mlx_t	*mlx;
-	t_textures	textures;
-	t_images	images;
-	char	**map; // la carte 2D
-	char	**mapcopy;
-	int		width; // largeur
-	int		height; // hauteur
-
-	int		move_x; //pos_x
-	int		move_y; //pos_y
-	int				x_gate;
-	int				y_gate;
-	int		player_x;
-	int		player_y;
-	int					count_p;
-	int					count_c;
-	int					count_e;
-}				t_game;
 
 typedef struct s_textures
 {
@@ -67,6 +46,27 @@ typedef struct s_images
 } t_images;
 
 
+typedef struct s_game
+{
+	mlx_t		*mlx;
+	t_textures	textures;
+	t_images	images;
+	char		**map; // la carte 2D
+	char		**mapcopy;
+	int			width; // largeur
+	int			height; // hauteur
+
+	int			gate_x;
+	int			gate_y;
+	int			player_x;
+	int			player_y;
+	int			collectible_x;
+	int			collectible_y;
+	int			count_p;
+	int			count_c;
+	int			count_e;
+}				t_game;
+
 /* Utils */
 int		ft_putstr(char *str);
 void	*ft_calloc(size_t nmemb, size_t size);
@@ -81,16 +81,20 @@ int check_collectible(t_game *game);
 int check_player(t_game *game);
 int check_exit(t_game *game);
 
-/* parse_map */
+/* parse_map.c */
 void	verif_extension_ber(t_game *game, char **argv);
 int	check_horizontal_walls(char *line);
 int check_vertical_walls(t_game *game);
 int check_form(t_game *game);
 int check_invalid_elements(t_game *game);
 
-/* parsing*/
+/* parsing.c*/
 void flood_fill(int x, int y, t_game *game);
 int validate_flood_fill(t_game *game);
+
+/* display.c*/
+void	display_map(t_game *game);
+void	display_sprites_in_start_position(t_game *game, char element, int x, int y);
 
 
 

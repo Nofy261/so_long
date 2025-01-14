@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:56:21 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/13 10:03:22 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:49:59 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // largeur de la carte
 
-// int	get_map_width(const char *path)
+// static int	get_map_width(const char *path)
 // {
 // 	int		fd;
 // 	int		width;
@@ -29,12 +29,11 @@
 // 		close(fd);
 // 		return (0);
 // 	}
-// 	width = ft_strlen(line); //-1 enlever??
+// 	width = ft_strlen(line); //-1 enlever
 // 	free(line);
 // 	close(fd);
 // 	return (width);
 // }
-
 
 
 static void trim_newline(char *line)
@@ -46,24 +45,24 @@ static void trim_newline(char *line)
         line[len - 1] = '\0';
 }
 
-static int get_map_height(const char *path)
-{
-    int fd;
-    char *line;
-    int height;
+// static int get_map_height(const char *path)
+// {
+//     int fd;
+//     char *line;
+//     int height;
     
-    height = 0;
-    fd = open(path, O_RDONLY);
-    if (fd < 0)
-        return (-1); // Message a rajouter?? Erreur si le fichier ne peut pas être ouvert
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        height++;
-        free(line); // Libère la mémoire allouée par get_next_line
-    }
-    close(fd);
-    return (height);
-}
+//     height = 0;
+//     fd = open(path, O_RDONLY);
+//     if (fd < 0)
+//         return (-1); // Message a rajouter?? Erreur si le fichier ne peut pas être ouvert
+//     while ((line = get_next_line(fd)) != NULL)
+//     {
+//         height++;
+//         free(line); // Libère la mémoire allouée par get_next_line
+//     }
+//     close(fd);
+//     return (height);
+// }
 
 int open_map(const char *path, t_game *game)
 {
@@ -74,12 +73,18 @@ int open_map(const char *path, t_game *game)
 
     i = 0;
     j = 0;
-    game->height = get_map_height(path);
-    if (game->height <= 0)
-    {
-        ft_putstr("Error: Invalid map file\n");
-        return (1);
-    }
+    // game->height = get_map_height(path);
+    // if (game->height <= 0)
+    // {
+    //     ft_putstr("Error: Invalid map height\n");
+    //     return (1);
+    // }
+    // game->width = get_map_width(path); // rajout
+    // if (game->width <= 0)  // rajout
+    // {
+    //     ft_putstr("Error: Invalid map width\n");
+    //     return (1);
+    // }
     fd = open(path, O_RDONLY);
     if (fd < 0)
     {
@@ -103,7 +108,6 @@ int open_map(const char *path, t_game *game)
     game->map[i] = NULL; // Termine le tableau avec un pointeur NULL
     game->mapcopy[i] = NULL;
     close(fd);
-
     // Nettoyage des lignes pour supprimer les '\n'
     while (j < game->height)
     {
