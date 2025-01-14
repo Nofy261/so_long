@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:17:57 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/14 18:01:51 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/14 19:04:20 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,24 @@ static void	init_texture(t_game *game)
 }
 
 // convertir les textures en images mlx pour pouvoir les afficher
-static void	convert_texture_to_image(t_game *game) // SEG FAULT
+void	convert_texture_to_image(t_game *game) // SEG FAULT
 {
 	printf("convert texture to image1\n");
+
+	// game->mlx = mlx_init(game->height * SPRITE_PIXEL,
+	// 		game->width * SPRITE_PIXEL, "Rabit party", true);
+	// if (!game->mlx)
+	// 	exit(EXIT_FAILURE);
+	// init_texture(game);
+	// if (!game->textures.texture_gate || !game->textures.texture_floor
+	// 	|| !game->textures.texture_carot
+	// 	|| !game->textures.texture_rabit_end || !game->textures.texture_rabit
+	// 	|| !game->textures.texture_wall)
+	// {
+	// 	//free_struct(vars);
+	// 	ft_putstr("Error: convert textures to image \n");
+	// 	exit(EXIT_FAILURE);
+	// }
 
 	game->images.image_carot = mlx_texture_to_image(game->mlx, game->textures.texture_carot);
 	game->images.image_floor = mlx_texture_to_image(game->mlx, game->textures.texture_floor);
@@ -45,13 +60,13 @@ static void	convert_texture_to_image(t_game *game) // SEG FAULT
 	game->images.image_wall = mlx_texture_to_image(game->mlx, game->textures.texture_wall);
 	
 
-	if (!game->images.image_carot || !game->images.image_floor ||
-		!game->images.image_gate || !game->images.image_rabit_end ||
-		!game->images.image_rabit || !game->images.image_wall)
-	{
-		ft_putstr("Error: Failed to convert texture to image\n");
-		exit(EXIT_FAILURE);
-	}
+	// if (!game->images.image_carot || !game->images.image_floor ||
+	// 	!game->images.image_gate || !game->images.image_rabit_end ||
+	// 	!game->images.image_rabit || !game->images.image_wall)
+	// {
+	// 	ft_putstr("Error: Failed to convert texture to image\n");
+	// 	exit(EXIT_FAILURE);
+	// }
 }
 
 // mlx_image_to_window(mlx, image, 0, 0);
@@ -80,7 +95,7 @@ void	display_map(t_game *game)
     int j;
 
     j = 0;
-	game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height * SPRITE_PIXEL, "Rabbit Party", true);// rajout
+	// game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height * SPRITE_PIXEL, "Rabbit Party", true);// rajout
 	init_texture(game);
 	printf("display map 2\n");
 	convert_texture_to_image(game);

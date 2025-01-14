@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/14 17:43:02 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:56:04 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,50 +44,56 @@
 #include <stdio.h> // A ENLEVER !!!!!!!!!!!!!!!!!!
 int main(int argc, char **argv)
 {
-    t_game *game;
+    t_game game;
+    game.count_e = 0;
+    game.count_p = 0;
+    game.count_c = 0;
+    game.width = 0;
+    game.height = 0;
     if (argc != 2)
     {
         ft_putstr("Error: Invalid argument\n");
         return (1);
     }
-    game = ft_calloc(sizeof(t_game), 1);
-    if (!game)
+    // game = ft_calloc(sizeof(t_game), 1);
+    // if (!&game)
+    // {
+    //     ft_putstr("Error: Memory allocation failed\n");
+    //     return (1);
+    // }
+	verif_extension_ber(&game, argv);
+    if (open_map(argv[1], &game) != 0)
     {
-        ft_putstr("Error: Memory allocation failed\n");
+        //free(&game);
         return (1);
     }
-	verif_extension_ber(game, argv);
-    if (open_map(argv[1], game) != 0)
-    {
-        free(game);
+    if (check_invalid_elements(&game) == 1)
         return (1);
-    }
-    if (check_invalid_elements(game) == 1)
+    if (check_collectible(&game) == 1)
         return (1);
-    if (check_collectible(game) == 1)
+    if (check_exit(&game) == 1)
         return (1);
-    if (check_exit(game) == 1)
+    if (check_player(&game) == 1)
         return (1);
-    if (check_player(game) == 1)
+    if (check_form(&game) == 1)
         return (1);
-    if (check_form(game) == 1)
+    if  (check_horizontal_walls(game.map[0]) == 1 || 
+        check_horizontal_walls(game.map[game.height - 1]) == 1)
         return (1);
-    if  (check_horizontal_walls(game->map[0]) == 1 || 
-        check_horizontal_walls(game->map[game->height - 1]) == 1)
+    if (check_vertical_walls(&game) == 1)
         return (1);
-    if (check_vertical_walls(game) == 1)
-        return (1);
-    //print_map(game);
-    if (validate_flood_fill(game) == 1)// rajout
+    //print_map(&game);
+    if (validate_flood_fill(&game) == 1)// rajout
       return (1);// rajout
     //printf("\n");
-    //print_map(game);
+    //print_map(&game);
     mlx_set_setting(MLX_STRETCH_IMAGE, true);// permet d'adapter l'image quand on retrecit l'ecran
-   // game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height * SPRITE_PIXEL, "Rabbit Party", true);
+    game.mlx = mlx_init(game.width * SPRITE_PIXEL, game.height * SPRITE_PIXEL, "Rabbit Party", true);
     printf("je passe 9\n");
-    display_map(game);
+    display_map(&game);
     printf("je passe 10\n");
-    free(game);
+    mlx_loop(game.mlx);
+    // free(&game);
     return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/14 16:24:36 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:20:04 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int validate_flood_fill(t_game *game);
 /* display.c*/
 void	display_map(t_game *game);
 void	display_sprites_in_start_position(t_game *game, char element, int x, int y);
-
+void	convert_texture_to_image(t_game *game);
 
 
 #endif
