@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/15 11:54:40 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:58:38 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,10 @@ int		map_conditions(t_game *game);
 void	display_map(t_game *game);
 void	display_sprites_in_start_position(t_game *game, char element, int x, int y);
 void	convert_texture_to_image(t_game *game);
+
+/* controls.c */
+
+
 
 
 #endif
