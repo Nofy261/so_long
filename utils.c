@@ -6,28 +6,22 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:33:36 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/15 11:19:05 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/15 11:49:50 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	int	i;
 
-	if (!str)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
 	i = 0;
 	while (str[i])
 	{
 		write (1, &str[i], 1);
 		i++;
 	}
-	return (i);
 }
 void	*ft_memset(void *s, int c, size_t n)
 {

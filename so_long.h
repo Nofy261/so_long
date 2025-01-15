@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/15 11:21:28 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/15 11:54:40 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,30 +74,31 @@ void    print_map(t_game *game); // A ENLEVER !!!!!!!!!!!!!!!!
 
 
 /* Utils */
-int		ft_putstr(char *str);
+void	ft_putstr(char *str);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memset(void *s, int c, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_free(char **str);
 
 /* open_map */
-int open_map(const char *path, t_game *game);
+int		open_map(const char *path, t_game *game);
 
 /* check_pec*/
-int check_collectible(t_game *game);
-int check_player(t_game *game);
-int check_exit(t_game *game);
+int		check_collectible(t_game *game);
+int		check_player(t_game *game);
+int		check_exit(t_game *game);
 
 /* parse_map.c */
 void	verif_extension_ber(t_game *game, char **argv);
-int	check_horizontal_walls(char *line);
+int		check_horizontal_walls(char *line);
 int check_vertical_walls(t_game *game);
 int check_form(t_game *game);
 int check_invalid_elements(t_game *game);
 
 /* parsing.c*/
-void flood_fill(int x, int y, t_game *game);
-int validate_flood_fill(t_game *game);
+void	flood_fill(int x, int y, t_game *game);
+int		validate_flood_fill(t_game *game);
+int		map_conditions(t_game *game);
 
 /* display.c*/
 void	display_map(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:30:20 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/14 15:41:05 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/15 11:53:45 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,3 +67,24 @@ int validate_flood_fill(t_game *game)
 	return (0);   
 }
 
+int    map_conditions(t_game *game)
+{
+    if (check_invalid_elements(game) == 1)
+        return (1);
+    if (check_collectible(game) == 1)
+        return (1);
+    if (check_exit(game) == 1)
+        return (1);
+    if (check_player(game) == 1)
+        return (1);
+    if (check_form(game) == 1)
+        return (1);
+    if  (check_horizontal_walls(game->map[0]) == 1 || 
+        check_horizontal_walls(game->map[game->height - 1]) == 1)
+        return (1);
+    if (check_vertical_walls(game) == 1)
+        return (1);
+    if (validate_flood_fill(game) == 1)
+      return (1);
+    return (0);
+}

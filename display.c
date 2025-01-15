@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:17:57 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/15 11:20:30 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/15 11:56:26 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	init_texture(t_game *game)
         !game->textures.texture_rabit || !game->textures.texture_rabit_end)
 	{
         ft_putstr("Error: loading textures\n"); 
-		// ft_free();
+		ft_free(game->map);
         exit(EXIT_FAILURE); 
     }
 }
