@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/13 10:07:34 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/15 11:04:54 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int check_vertical_walls(t_game *game)
         }
         if (game->map[j][last_col] != '1')
         {
-            ft_putstr("Error: Right wall is not surrounded by walls\n");// Ne s'affiche pas en erreur a revoir
+            ft_putstr("Error: Right wall is not surrounded by walls\n");
             //ft_free(game->map);
             free(game);
             return (1);

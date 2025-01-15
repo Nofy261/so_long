@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:48:06 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/14 15:45:04 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/15 11:02:33 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int check_player(t_game *game)
     }
     return (0);
 }
-
 
 int check_exit(t_game *game)
 {
