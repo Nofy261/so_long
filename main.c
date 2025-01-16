@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/15 17:33:41 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:30:14 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height * SPRITE_PIXEL, "Rabit Party", true);
     mlx_set_setting(MLX_STRETCH_IMAGE, true);
     display_map(game);
-   //mlx_key_hook(mlx, key_events())
+    mlx_key_hook(game->mlx, key_events, game);
     mlx_loop(game->mlx);
     free(game);
     return (0);

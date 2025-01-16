@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/15 16:58:38 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:54:59 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_game
 	int			count_p;
 	int			count_c;
 	int			count_e;
+	int			move_count;
 }				t_game;
 
 
@@ -105,9 +106,17 @@ void	display_map(t_game *game);
 void	display_sprites_in_start_position(t_game *game, char element, int x, int y);
 void	convert_texture_to_image(t_game *game);
 
+
 /* controls.c */
+//void	key_events(mlx_key_data_t keydata, t_game *game);
+void	key_events(mlx_key_data_t keydata, void *param);
+void move(t_game *game, int key, int movement);
 
+void	collect_carot(t_game *game);
 
+/* movement.c */
+void	move_up_down(t_game *game, int movement);
+void	move_left_right(t_game *game, int movement);
 
 
 #endif
