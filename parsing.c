@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:30:20 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/15 11:53:45 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:06:49 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void     flood_fill(int x, int y, t_game *game)
 
 int validate_flood_fill(t_game *game)
 {
-    flood_fill(game->player_x, game->player_y, game);
+    flood_fill(game->player_y, game->player_x, game);
     int	i;
     int j;
 

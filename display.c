@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:17:57 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/15 15:25:34 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:52:53 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,20 @@ void	display_map(t_game *game)
     int i;
     int j;
 
-    j = 0;
+    i = 0;
 	init_texture(game);
 	convert_texture_to_image(game);
-    while (game->map[j])
+    while (game->map[i])
     {
-        i = 0;
-        while (game->map[j][i])
+        j = 0;
+        while (game->map[i][j])
         {
-            display_sprites_in_start_position(game, game->map[j][i], i, j);
-            i++;
+            display_sprites_in_start_position(game, game->map[i][j], j, i);
+            j++;
         }
-        j++;
+        i++;
     }
-	mlx_image_to_window(game->mlx, game->images.image_rabit, game->player_x * SPRITE_PIXEL, game->player_y * SPRITE_PIXEL);
+	mlx_image_to_window(game->mlx, game->images.image_rabit, game->player_y * SPRITE_PIXEL, game->player_x * SPRITE_PIXEL);
 }
 
 

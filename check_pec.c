@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:48:06 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/16 11:41:10 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:06:21 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,21 @@ int check_collectible(t_game *game)
     int i;
     int j;
 
-    j = 0;
-    while (game->map[j])
+    i = 0;
+    while (game->map[i])
     {
-        i = 0;
-        while (game->map[j][i])
+        j = 0;
+        while (game->map[i][j])
         {
-            if (game->map[j][i] == 'C')
-                game->count_c++;        
-            i++;
+            if (game->map[i][j] == 'C')
+            {
+                // game->collectible_x = i;// rajout
+                // game->collectible_y = j;// rajout
+                game->count_c++;
+            }        
+            j++;
         }
-        j++;
+        i++;
     }
     if (game->count_c < 1)
     {
@@ -42,21 +46,21 @@ int check_player(t_game *game)
     int i;
     int j;
 
-    j = 0;
-    while (game->map[j])
+    i = 0;
+    while (game->map[i])
     {
-        i = 0;
-        while (game->map[j][i])
+        j = 0;
+        while (game->map[i][j])
         {
-            if (game->map[j][i] == 'P')
+            if (game->map[i][j] == 'P')
             {
-                game->player_x = i;
-                game->player_y = j;
+                game->player_x = j;
+                game->player_y = i;
                 game->count_p++;
             }  
-            i++;
+            j++;
         }
-        j++;
+        i++;
     }
     if (game->count_p != 1)
     {
@@ -71,21 +75,21 @@ int check_exit(t_game *game)
     int i;
     int j;
 
-    j = 0;
-    while (game->map[j])
+    i = 0;
+    while (game->map[i])
     {
-        i = 0;
-        while (game->map[j][i])
+        j = 0;
+        while (game->map[i][j])
         {
-            if (game->map[j][i] == 'E')
+            if (game->map[i][j] == 'E')
             {
-                game->gate_x = i;
-                game->gate_y = j;
+                game->gate_x = j;
+                game->gate_y = i;
                 game->count_e++;
             }        
-            i++;
+            j++;
         }
-        j++;
+        i++;
     }
     if (game->count_e != 1)
     {
