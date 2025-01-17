@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:36:01 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/17 16:36:12 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:35:05 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,23 @@ void	collect_carot(t_game *game)
 	// si oui : l'image de carotte disparait (enabled = false);
 	// marquer la case comme vide = '0';
 	// count_c--;
+	// si l'instance x, y = 'c' , i++;
+	// count_c = nombre de collectible
+	// tant que i est different du nombre de collectible, on continue a collecter les c 
+	//int	i;
+	//i = 0;
+	//while (i < game->count_c)
+	//{
+		//if (game->images.image_carot->instances[i].y == game->collectible_y &&
+		//	game->images.image_carot->instances[i].x == game->collectible_x )
+		
 	
-		game->images.image_carot->instances[0].enabled = false;
+		game->images.image_carot->instances[0].enabled = false; //base
 		// regarder les coordoonees de chaque image
-		game->map[game->player_y][game->player_x] = '0';
-		game->count_c--;
-	
+		game->map[game->player_y][game->player_x] = '0'; // base
+		game->count_c--; // base
+		//i++;
+//	}
 
 }
 
