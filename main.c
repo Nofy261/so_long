@@ -6,12 +6,21 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/16 12:30:14 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:20:29 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// typedef enum action
+// {
+// 	MLX_RELEASE = 0,
+// 	MLX_PRESS	= 1,
+// 	MLX_REPEAT	= 2,
+// }	action_t;
+
+
+// gerer la taille d'une grande map dans flood fill(limiter)
 int main(int argc, char **argv)
 {
     t_game *game;

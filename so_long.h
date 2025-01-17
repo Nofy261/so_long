@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/16 14:54:59 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:45:22 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,15 +108,16 @@ void	convert_texture_to_image(t_game *game);
 
 
 /* controls.c */
-//void	key_events(mlx_key_data_t keydata, t_game *game);
+void move(t_game *game, int key);
 void	key_events(mlx_key_data_t keydata, void *param);
-void move(t_game *game, int key, int movement);
 
-void	collect_carot(t_game *game);
+//void	collect_carot(t_game *game);
 
 /* movement.c */
-void	move_up_down(t_game *game, int movement);
-void	move_left_right(t_game *game, int movement);
+void move_up(t_game *game);
+void move_down(t_game *game);
+void move_right(t_game *game);
+void	move_left(t_game *game);
 
 
 #endif
