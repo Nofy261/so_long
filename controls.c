@@ -6,40 +6,33 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:36:01 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/17 17:35:05 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/18 15:43:53 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
 // //game->images.image_rabit->instances[0].x = game->player_y * SPRITE_PIXEL;
 void	collect_carot(t_game *game)
 {
-	// verifier que la carotte et le P = meme position;
-	// si oui : l'image de carotte disparait (enabled = false);
-	// marquer la case comme vide = '0';
-	// count_c--;
-	// si l'instance x, y = 'c' , i++;
-	// count_c = nombre de collectible
-	// tant que i est different du nombre de collectible, on continue a collecter les c 
-	//int	i;
-	//i = 0;
-	//while (i < game->count_c)
-	//{
-		//if (game->images.image_carot->instances[i].y == game->collectible_y &&
-		//	game->images.image_carot->instances[i].x == game->collectible_x )
-		
+	int	i;
 	
-		game->images.image_carot->instances[0].enabled = false; //base
-		// regarder les coordoonees de chaque image
-		game->map[game->player_y][game->player_x] = '0'; // base
-		game->count_c--; // base
-		//i++;
-//	}
-
-}
-
+	i = 0;
+	while (1)
+	{
+		if (game->count_c != 0)
+		{
+			if (game->player_y * SPRITE_PIXEL == game->images.image_carot->instances[i].y &&
+				game->player_x * SPRITE_PIXEL == game->images.image_carot->instances[i].x)
+			{
+				game->images.image_carot->instances[i].enabled = false;
+				game->map[game->player_y][game->player_x] = '0';
+				game->count_c--;
+				break ;	
+			}
+		}
+		i++;
+	}
 	// if (game->count_c == 0)
 	// {
 	// 	mlx_image_to_window(game->mlx, game->images.image_rabit_end,
@@ -47,6 +40,8 @@ void	collect_carot(t_game *game)
 	// 	if (game->map[(game->player_x)][(game->player_y)] == 'E')
 	// 		mlx_close_window(game->mlx);
 	// }
+}
+
 
 
 
@@ -73,8 +68,7 @@ void move(t_game *game, int key)
             move_down(game);
     }
 	if (game->map[game->player_y][game->player_x] == 'C')
-		collect_carot(game);
-	
+		collect_carot(game);	
 }
 
 void	key_events(mlx_key_data_t keydata, void *param)
