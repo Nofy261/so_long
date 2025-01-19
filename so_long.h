@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/19 16:46:17 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:00:41 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,23 @@
 
 typedef struct s_textures
 {
-	mlx_texture_t *texture_carot;
-	mlx_texture_t *texture_floor;
-	mlx_texture_t *texture_gate;
-	mlx_texture_t *texture_rabit_end;
-	mlx_texture_t *texture_rabit;
-	mlx_texture_t *texture_wall;
-
-	
-} t_textures;
-
+	mlx_texture_t	*texture_carot;
+	mlx_texture_t	*texture_floor;
+	mlx_texture_t	*texture_gate;
+	mlx_texture_t	*texture_rabit_end;
+	mlx_texture_t	*texture_rabit;
+	mlx_texture_t	*texture_wall;
+}	t_textures;
 
 typedef struct s_images
 {
-	mlx_image_t *image_carot;
-	mlx_image_t *image_floor;
-	mlx_image_t *image_gate;
-	mlx_image_t *image_rabit_end;
-	mlx_image_t *image_rabit;
-	mlx_image_t *image_wall;
-	
-} t_images;
-
+	mlx_image_t		*image_carot;
+	mlx_image_t		*image_floor;
+	mlx_image_t		*image_gate;
+	mlx_image_t		*image_rabit_end;
+	mlx_image_t		*image_rabit;
+	mlx_image_t		*image_wall;	
+}	t_images;
 
 typedef struct s_game
 {
@@ -55,7 +50,6 @@ typedef struct s_game
 	char		**mapcopy;
 	int			width;
 	int			height;
-
 	int			gate_x;
 	int			gate_y;
 	int			player_x;
@@ -67,7 +61,6 @@ typedef struct s_game
 	int			count_e;
 	int			move_count;
 }				t_game;
-
 
 /* Utils */
 void	ft_putstr(char *str);
@@ -98,15 +91,14 @@ int		map_conditions(t_game *game);
 
 /* display.c*/
 void	display_map(t_game *game);
-void	display_sprites_in_start_position(t_game *game, char element, int x, int y);
+void	display_sprites_in_start_position(t_game *game,
+			char element, int x, int y);
 void	convert_texture_to_image(t_game *game);
-
 
 /* controls.c */
 void	move(t_game *game, int key);
 void	key_events(mlx_key_data_t keydata, void *param);
 void	collect_carrot(t_game *game);
-
 
 /* movement.c */
 void	move_up(t_game *game);
@@ -117,6 +109,5 @@ void	move_left(t_game *game);
 /* ft_printf.c */
 int		ft_putchar(char c);
 int		ft_putnbr(int n);
-
 
 #endif
