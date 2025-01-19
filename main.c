@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/17 14:53:14 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/19 14:40:01 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 
 // gerer la taille d'une grande map dans flood fill(limiter)
+// Makefile remake??
 
 int main(int argc, char **argv)
 {
