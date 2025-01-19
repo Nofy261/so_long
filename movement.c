@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:06:58 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/17 14:55:02 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:40:34 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void move_up(t_game *game)
     game->images.image_rabit->instances[0].y = game->player_y * SPRITE_PIXEL;
 
     game->move_count++;
-    //ft_printf("%d\n", game->move_count);
+    ft_putnbr(game->move_count);
+    write (1, "\n", 1);
 }
 
 void move_down(t_game *game)
@@ -31,7 +32,8 @@ void move_down(t_game *game)
     game->images.image_rabit->instances[0].y = game->player_y * SPRITE_PIXEL;
 
     game->move_count++;
-	 //ft_printf("%d\n", game->move_count);
+    ft_putnbr(game->move_count);
+    write (1, "\n", 1);
 }
 
 void move_right(t_game *game)
@@ -42,7 +44,8 @@ void move_right(t_game *game)
     game->images.image_rabit->instances[0].y = game->player_y * SPRITE_PIXEL;
 
     game->move_count++;
-	 //ft_printf("%d\n", game->move_count);
+    ft_putnbr(game->move_count);
+    write (1, "\n", 1);
 }
 
 void	move_left(t_game *game)
@@ -52,9 +55,6 @@ void	move_left(t_game *game)
 	game->images.image_rabit->instances[0].x = game->player_x * SPRITE_PIXEL;
     game->images.image_rabit->instances[0].y = game->player_y * SPRITE_PIXEL;
 	game->move_count++;
-	 //ft_printf("%d\n", game->move_count);
+    ft_putnbr(game->move_count);
+    write (1, "\n", 1);
 }
-
-
-
-

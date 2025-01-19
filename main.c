@@ -6,23 +6,16 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/19 14:40:01 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:48:18 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// typedef enum action
-// {
-// 	MLX_RELEASE = 0,
-// 	MLX_PRESS	= 1,
-// 	MLX_REPEAT	= 2,
-// }	action_t;
-
 
 // gerer la taille d'une grande map dans flood fill(limiter)
 // Makefile remake??
-
+// image rabit_end
 int main(int argc, char **argv)
 {
     t_game *game;

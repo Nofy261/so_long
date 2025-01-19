@@ -6,13 +6,13 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:36:01 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/19 16:05:39 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:50:14 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	collect_carot(t_game *game)
+void	collect_carrot(t_game *game)
 {
 	int	i;
 	
@@ -62,11 +62,12 @@ void move(t_game *game, int key)
             move_down(game);
     }
 	if (game->map[game->player_y][game->player_x] == 'C')
-		collect_carot(game);
+		collect_carrot(game);
 	if (game->count_c == 0 && game->map[game->player_y][game->player_x] == 'E')
     {
 		// ft_free ??? 
 		// mlx destroy image ???
+		// mlx_terminate ??
         mlx_close_window(game->mlx); // Ferme la fenêtre
     } 
 }

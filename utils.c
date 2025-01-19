@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:33:36 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/15 13:55:51 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:51:57 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	*ft_free(char **str)
 	return (NULL);
 }
 
-// void	*ft_free_map(t_game *map)
+// void	*free_map(t_game *map)
 // {
 // 	int		i;
 

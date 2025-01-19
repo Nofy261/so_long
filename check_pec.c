@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:48:06 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/17 15:06:21 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:14:02 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@ int check_collectible(t_game *game)
         while (game->map[i][j])
         {
             if (game->map[i][j] == 'C')
-            {
-                // game->collectible_x = i;// rajout
-                // game->collectible_y = j;// rajout
-                game->count_c++;
-            }        
+                game->count_c++;       
             j++;
         }
         i++;

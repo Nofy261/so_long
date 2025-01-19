@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/17 12:12:15 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:46:17 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ typedef struct s_game
 	mlx_t		*mlx;
 	t_textures	textures;
 	t_images	images;
-	char		**map; // la carte 2D
+	char		**map;
 	char		**mapcopy;
-	int			width; // largeur
-	int			height; // hauteur
+	int			width;
+	int			height;
 
 	int			gate_x;
 	int			gate_y;
@@ -67,11 +67,6 @@ typedef struct s_game
 	int			count_e;
 	int			move_count;
 }				t_game;
-
-
-
-/* A Enlever */
-void    print_map(t_game *game); // A ENLEVER !!!!!!!!!!!!!!!!
 
 
 /* Utils */
@@ -92,9 +87,9 @@ int		check_exit(t_game *game);
 /* parse_map.c */
 void	verif_extension_ber(t_game *game, char **argv);
 int		check_horizontal_walls(char *line);
-int check_vertical_walls(t_game *game);
-int check_form(t_game *game);
-int check_invalid_elements(t_game *game);
+int		check_vertical_walls(t_game *game);
+int		check_form(t_game *game);
+int		check_invalid_elements(t_game *game);
 
 /* parsing.c*/
 void	flood_fill(int x, int y, t_game *game);
@@ -108,16 +103,20 @@ void	convert_texture_to_image(t_game *game);
 
 
 /* controls.c */
-void move(t_game *game, int key);
+void	move(t_game *game, int key);
 void	key_events(mlx_key_data_t keydata, void *param);
-void	collect_carot(t_game *game);
+void	collect_carrot(t_game *game);
 
 
 /* movement.c */
-void move_up(t_game *game);
-void move_down(t_game *game);
-void move_right(t_game *game);
+void	move_up(t_game *game);
+void	move_down(t_game *game);
+void	move_right(t_game *game);
 void	move_left(t_game *game);
+
+/* ft_printf.c */
+int		ft_putchar(char c);
+int		ft_putnbr(int n);
 
 
 #endif
