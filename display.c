@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:17:57 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/21 09:53:28 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:04:15 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	init_texture(t_game *game)
 	{
 		ft_putstr("Error: loading textures\n");
 		ft_free(game->map);
-		//free_map(game);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -50,7 +49,6 @@ void	convert_texture_to_image(t_game *game)
 		|| !game->images.image_rabit || !game->images.image_wall)
 	{
 		ft_putstr("Error: Failed to convert texture to image\n");
-		//free_map(game);// ajout
 		ft_free(game->map);
 		exit(EXIT_FAILURE);
 	}

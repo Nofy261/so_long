@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:56:21 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/21 11:14:34 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:52:22 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ int	open_map(const char *path, t_game *game)
 	if (fd < 0)
 	{
 		ft_putstr("Error opening map\n");
-		//close(fd); //ajout
-		ft_free(game->map);// ajout;
 		return (1);
 	}
 	game->map = ft_calloc(game->height + 1, sizeof(char *));
@@ -76,26 +74,26 @@ int	open_map(const char *path, t_game *game)
 	{
 		ft_putstr("Error: Memory allocation failed\n");
 		close(fd);
-		//ft_free(game->map);//ajouttt
-		free(game->map);// ajout 
-		free(game->mapcopy); // ajout
 		return (1);
 	}
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		game->map[i] = line;// Stocke la ligne dans game->map
-		game->mapcopy[i] = ft_strdup(line); // copier la ligne pour mapcopy
+		game->map[i] = line;
+		game->mapcopy[i] = ft_strdup(line);
 		i++;
 	}
-	game->map[i] = NULL; // Termine le tableau avec un pointeur NULL
+	game->map[i] = NULL;
 	game->mapcopy[i] = NULL;
 	close(fd);
 	i = 0;
-	// Nettoyage des lignes pour supprimer les '\n'
 	while (i < game->height)
 	{
 		trim_newline(game->map[i]);
 		i++;
 	}
+	//ft_free(game->map);
+	//ft_free(game->mapcopy[i]);
+	
+	//ft_free(&game->mapcopy[i]);
 	return (0);
 }

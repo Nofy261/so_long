@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/21 09:53:07 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:51:18 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ int		ft_putnbr(int n);
 
 /* free.c */
 void	*ft_free(char **str);
-void	*free_map(t_game *game);
 void    free_texture(t_game *game);
 void    free_struct(t_game *game);
 
