@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:33:36 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/19 17:10:14 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:25:13 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_putstr(char *str)
 		i++;
 	}
 }
+
 void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t	i;
@@ -81,17 +82,17 @@ void	*ft_free(char **str)
 	return (NULL);
 }
 
-// void	*free_map(t_game *map)
-// {
-// 	int		i;
+void	*free_map(t_game *game)
+{
+	int		i;
 
-// 	i = 0;
-// 	while (game->map[i] != NULL)
-// 	{
-// 		free(game->map[i]);
-// 		i++;
-// 	}
-// 	free(game->map);
-// 	game->map = NULL;
-// 	return (0);
-// }
+	i = 0;
+	while (game->map[i] != NULL)
+	{
+		free(game->map[i]);
+		i++;
+	}
+	free(game->map);
+	game->map = NULL;
+	return (0);
+}

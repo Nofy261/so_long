@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/19 17:09:11 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/21 08:22:33 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,20 @@ int	main(int argc, char **argv)
 	if (!game)
 	{
 		ft_putstr("Error: Memory allocation failed\n");
+		free(game);// ajout
 		return (1);
 	}
 	verif_extension_ber(game, argv);
 	if (open_map(argv[1], game) != 0)
 	{
-		free(game);
+		ft_free(game->map);
+		//free(game);// modif 
 		return (1);
 	}
 	if (map_conditions(game) == 1)
 	{
 		ft_free(game->map);
+		//free_map(game);//ajout
 		return (1);
 	}
 	game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height
@@ -49,5 +52,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game->mlx, key_events, game);
 	mlx_loop(game->mlx);
 	free(game);
+	//free_map(game);
 	return (0);
 }

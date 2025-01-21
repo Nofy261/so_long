@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/19 17:07:42 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:14:23 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	verif_extension_ber(t_game *game, char **argv)
 	if ((len < 4) || ft_strncmp(&argv[1][len - 4], ".ber", 4) != 0)
 	{
 		free(game);
+		ft_free(game->map);// ajout
 		ft_putstr("Error: Invalid file extension\n");
 		exit(EXIT_FAILURE);
 	}
@@ -35,6 +36,7 @@ int	check_horizontal_walls(char *line)
 		if (line[i] != '1')
 		{
 			ft_putstr("Error: horizontal wall is not surrounded by walls\n");
+			free(line); // utile ou pas?
 			return (1);
 		}
 		i++;
@@ -54,15 +56,15 @@ int	check_vertical_walls(t_game *game)
 		if (game->map[j][0] != '1')
 		{
 			ft_putstr("Error: Left wall is not surrounded by walls\n");
-			// ft_free(game->map);
-			free(game);
+			ft_free(game->map);
+			//free(game);
 			return (1);
 		}
 		if (game->map[j][last_col] != '1')
 		{
 			ft_putstr("Error: Right wall is not surrounded by walls\n");
-			// ft_free(game->map);
-			free(game);
+			ft_free(game->map);
+			//free(game);
 			return (1);
 		}
 		j++;
@@ -89,6 +91,7 @@ int	check_form(t_game *game)
 		if (j != size)
 		{
 			ft_putstr("Error: Invalid form of map\n");
+			ft_free(game->map);// ajout
 			return (1);
 		}
 		i++;
@@ -113,6 +116,7 @@ int	check_invalid_elements(t_game *game)
 				&& game->map[i][j] != '1')
 			{
 				ft_putstr("Error: Unknown element\n");
+				ft_free(game->map);// ajout
 				return (1);
 			}
 			j++;

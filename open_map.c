@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:56:21 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/19 17:08:36 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:31:29 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	get_height_and_width(const char *path, t_game *game)
 	if (fd < 0)
 	{
 		ft_putstr("Error opening map\n");
+		ft_free(game->map);// ajout
 		exit(1);
 	}
 	while ((line = get_next_line(fd)) != NULL)
@@ -65,6 +66,7 @@ int	open_map(const char *path, t_game *game)
 	if (fd < 0)
 	{
 		ft_putstr("Error opening map\n");
+		ft_free(game->map);// ajout;
 		return (1);
 	}
 	game->map = ft_calloc(game->height + 1, sizeof(char *));
@@ -73,11 +75,14 @@ int	open_map(const char *path, t_game *game)
 	{
 		ft_putstr("Error: Memory allocation failed\n");
 		close(fd);
+		//ft_free(game->map);//ajouttt
+		free(game->map);// ajout 
+		free(game->mapcopy); // ajout
 		return (1);
 	}
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		game->map[i] = line;                // Stocke la ligne dans game->map
+		game->map[i] = line;// Stocke la ligne dans game->map
 		game->mapcopy[i] = ft_strdup(line); // copier la ligne pour mapcopy
 		i++;
 	}

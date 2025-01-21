@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:30:20 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/19 17:09:37 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:17:47 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,13 @@ int	validate_flood_fill(t_game *game)
 			if (game->mapcopy[i][j] == 'C')
 			{
 				ft_putstr("Error: Items still uncollected.\n");
+				//ft_free(game->map);// ajout
 				return (1);
 			}
 			if (game->mapcopy[i][j] == 'E')
 			{
 				ft_putstr("Error: door inaccessible\n");
+				//ft_free(game->map);// ajout
 				return (1);
 			}
 			j++;
