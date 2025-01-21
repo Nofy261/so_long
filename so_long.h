@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/20 16:25:22 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/21 09:53:07 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ void	ft_putstr(char *str);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memset(void *s, int c, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-void	*ft_free(char **str);
-void	*free_map(t_game *game);
+
 
 /* open_map */
 int		open_map(const char *path, t_game *game);
@@ -89,6 +88,7 @@ int		check_invalid_elements(t_game *game);
 void	flood_fill(int x, int y, t_game *game);
 int		validate_flood_fill(t_game *game);
 int		map_conditions(t_game *game);
+//void	check_conditions(t_game *game);
 
 /* display.c*/
 void	display_map(t_game *game);
@@ -110,5 +110,11 @@ void	move_left(t_game *game);
 /* ft_printf.c */
 int		ft_putchar(char c);
 int		ft_putnbr(int n);
+
+/* free.c */
+void	*ft_free(char **str);
+void	*free_map(t_game *game);
+void    free_texture(t_game *game);
+void    free_struct(t_game *game);
 
 #endif

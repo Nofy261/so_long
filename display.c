@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:17:57 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/20 16:11:41 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/21 09:53:28 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,4 @@ void	display_map(t_game *game)
 	mlx_image_to_window(game->mlx, game->images.image_rabit, game->player_y
 		* SPRITE_PIXEL, game->player_x * SPRITE_PIXEL);
 }
+

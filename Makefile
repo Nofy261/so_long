@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 14:08:07 by nolecler          #+#    #+#              #
-#    Updated: 2025/01/19 16:28:39 by nolecler         ###   ########.fr        #
+#    Updated: 2025/01/21 09:53:22 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ FSRCS = main.c \
 		controls.c \
 		movement.c \
 		ft_printf.c \
+		free.c \
 		
 OFILES = $(FSRCS:.c=.o)
 

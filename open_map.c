@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:56:21 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/20 17:31:29 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:26:20 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	open_map(const char *path, t_game *game)
 	if (fd < 0)
 	{
 		ft_putstr("Error opening map\n");
+		//close(fd); //ajout
 		ft_free(game->map);// ajout;
 		return (1);
 	}

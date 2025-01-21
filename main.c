@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/21 08:22:33 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:01:06 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 	if (open_map(argv[1], game) != 0)
 	{
 		ft_free(game->map);
-		//free(game);// modif 
+		//free(game);// modif
 		return (1);
 	}
 	if (map_conditions(game) == 1)
@@ -51,7 +51,8 @@ int	main(int argc, char **argv)
 	display_map(game);
 	mlx_key_hook(game->mlx, key_events, game);
 	mlx_loop(game->mlx);
-	free(game);
+	free_struct(game);// ajout
+	//free(game);
 	//free_map(game);
 	return (0);
 }
