@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/21 14:50:53 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:02:40 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ int	main(int argc, char **argv)
 	display_map(game);
 	mlx_key_hook(game->mlx, key_events, game);
 	mlx_loop(game->mlx);
-	free_struct(game);
+	//free_struct(game);
 	return (0);
 }
