@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:33:36 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/21 10:39:05 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:52:09 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,31 +68,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-void	*ft_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-	return (NULL);
-}
-
-void	*free_map(t_game *game)
-{
-	int		i;
-
-	i = 0;
-	while (game->map[i] != NULL)
-	{
-		free(game->map[i]);
-		i++;
-	}
-	free(game->map);
-	game->map = NULL;
-	return (0);
-}
