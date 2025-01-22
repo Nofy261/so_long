@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:34:32 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/21 14:18:43 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:46:36 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	verif_extension_ber(t_game *game, char **argv)
 	len = ft_strlen(argv[1]);
 	if ((len < 4) || ft_strncmp(&argv[1][len - 4], ".ber", 4) != 0)
 	{
-		// ft_free(game->map);// ajout
 		ft_putstr("Error: Invalid file extension\n");
 		free(game);
 		exit (1);
@@ -86,8 +85,6 @@ int	check_form(t_game *game)
 		if (j != size)
 		{
 			ft_putstr("Error: Invalid form of map\n");
-			// ft_free(game->map);
-			// exit (1);
 			return (1);
 		}
 		i++;

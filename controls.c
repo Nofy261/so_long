@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:36:01 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/20 16:18:29 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:50:18 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ static void	end_game(t_game *game)
 {
 	if (game->count_c == 0 && game->map[game->player_y][game->player_x] == 'E')
 	{
-		//free_map(game);
 		ft_free(game->map);
-		// mlx destroy image ???
-		//mlx_terminate(game->mlx);
 		mlx_close_window(game->mlx);
 	}
 }
@@ -74,7 +71,7 @@ void	move(t_game *game, int key)
 	{
 		if (game->map[game->player_y + 1][game->player_x] != '1')
 			move_down(game);
-	}	
+	}
 	if (game->map[game->player_y][game->player_x] == 'C')
 		collect_carrot(game);
 	end_game(game);
@@ -92,5 +89,5 @@ void	key_events(mlx_key_data_t keydata, void *param)
 	if (keycode == MLX_KEY_ESCAPE)
 		mlx_close_window(game->mlx);
 	else if (action == MLX_PRESS)
-		move(game, keycode);	
+		move(game, keycode);
 }

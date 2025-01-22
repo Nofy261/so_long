@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:30:20 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/22 12:27:44 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:49:06 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	validate_flood_fill(t_game *game)
 
 int	map_conditions(t_game *game)
 {
-	if (check_invalid_elements(game) == 1 
+	if (check_invalid_elements(game) == 1
 		|| check_collectible(game) == 1
 		|| check_exit(game) == 1
 		|| check_player(game) == 1

@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:17:57 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/22 08:16:54 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:49:37 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,5 @@ void	display_map(t_game *game)
 		i++;
 	}
 	mlx_image_to_window(game->mlx, game->images.image_rabit, game->player_x
-		* SPRITE_PIXEL, game->player_y * SPRITE_PIXEL); // modif
+		* SPRITE_PIXEL, game->player_y * SPRITE_PIXEL);
 }
-
