@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:30:20 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/21 14:41:54 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/22 08:16:36 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	validate_flood_fill(t_game *game)
 	int	i;
 	int	j;
 
-	flood_fill(game->player_y, game->player_x, game);
+	flood_fill(game->player_x, game->player_y, game);//modif
 	i = 0;
 	while (game->mapcopy[i])
 	{
