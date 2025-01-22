@@ -6,11 +6,17 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:51:58 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/21 14:51:15 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:11:12 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void    free_struct(t_game *game)
+{
+    free(game);
+	exit(1);
+}
 
 void    free_texture(t_game *game)
 {
@@ -20,17 +26,6 @@ void    free_texture(t_game *game)
     mlx_delete_texture(game->textures.texture_floor);
     mlx_delete_texture(game->textures.texture_rabit_end);
     mlx_delete_texture(game->textures.texture_rabit);
-}
-
-void    free_struct(t_game *game)
-{
-    free_texture(game);
-    mlx_terminate(game->mlx);
-    if (game->map != NULL)
-		ft_free(game->map);
-	if (game->mapcopy != NULL)
-		ft_free(game->mapcopy);
-    free(game);
 }
 
 void	*ft_free(char **str)
@@ -45,4 +40,11 @@ void	*ft_free(char **str)
 	}
 	free(str);
 	return (NULL);
+}
+
+void	ft_free_all(t_game *game)
+{
+	ft_free(game->mapcopy);
+	mlx_terminate(game->mlx);
+	free_texture(game);
 }
