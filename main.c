@@ -6,13 +6,13 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 08:43:13 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 09:17:24 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static t_game *init_game(int argc, char **argv)
+static t_game	*init_game(int argc, char **argv)
 {
 	t_game	*game;
 
@@ -31,11 +31,10 @@ static t_game *init_game(int argc, char **argv)
 	return (game);
 }
 
-
 int	main(int argc, char **argv)
 {
-	t_game *game;
-	
+	t_game	*game;
+
 	game = init_game(argc, argv);
 	if (open_map(argv[1], game) == 1)
 		free_struct(game);

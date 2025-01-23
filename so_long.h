@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/22 13:48:03 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 10:05:05 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,15 @@ void				*ft_calloc(size_t nmemb, size_t size);
 void				*ft_memset(void *s, int c, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
-/* open_map */
+/* open_and_read_map */
 int					open_map(const char *path, t_game *game);
+int					read_map(int fd, t_game *game);
+
+/* map_open_utils.c*/
+void				trim_newline(char *line);
+void				get_height_and_width(const char *path, t_game *game);
+int					allocate_map_memory(t_game *game);
+int					open_file(const char *path);
 
 /* check_pec*/
 int					check_collectible(t_game *game);
@@ -83,11 +90,10 @@ int					check_vertical_walls(t_game *game);
 int					check_form(t_game *game);
 int					check_invalid_elements(t_game *game);
 
-/* parsing.c*/
+/* validate_map.c*/
 void				flood_fill(int x, int y, t_game *game);
 int					validate_flood_fill(t_game *game);
 int					map_conditions(t_game *game);
-// void	check_conditions(t_game *game);
 
 /* display.c*/
 void				display_map(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:17:57 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/22 13:49:37 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 10:09:25 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ static void	init_texture(t_game *game)
 	game->textures.texture_floor = mlx_load_png("images/floor.png");
 	game->textures.texture_gate = mlx_load_png("images/gate.png");
 	game->textures.texture_rabit = mlx_load_png("images/rabit.png");
-	game->textures.texture_rabit_end = mlx_load_png("images/rabit_end.png");
 	game->textures.texture_wall = mlx_load_png("images/wall.png");
 	if (!game->textures.texture_carot || !game->textures.texture_gate
 		|| !game->textures.texture_wall || !game->textures.texture_floor
-		|| !game->textures.texture_rabit || !game->textures.texture_rabit_end)
+		|| !game->textures.texture_rabit)
 	{
 		ft_putstr("Error: loading textures\n");
 		ft_free(game->map);
@@ -38,14 +37,12 @@ void	convert_texture_to_image(t_game *game)
 			game->textures.texture_floor);
 	game->images.image_gate = mlx_texture_to_image(game->mlx,
 			game->textures.texture_gate);
-	game->images.image_rabit_end = mlx_texture_to_image(game->mlx,
-			game->textures.texture_rabit_end);
 	game->images.image_rabit = mlx_texture_to_image(game->mlx,
 			game->textures.texture_rabit);
 	game->images.image_wall = mlx_texture_to_image(game->mlx,
 			game->textures.texture_wall);
 	if (!game->images.image_carot || !game->images.image_floor
-		|| !game->images.image_gate || !game->images.image_rabit_end
+		|| !game->images.image_gate
 		|| !game->images.image_rabit || !game->images.image_wall)
 	{
 		ft_putstr("Error: Failed to convert texture to image\n");

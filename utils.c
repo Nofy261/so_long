@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:33:36 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/22 13:49:18 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 10:02:47 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_memset(ptr, '\0', total_size);
 	return (ptr);
 }
-
-// void    *ft_calloc(size_t nmemb, size_t size) // modif
-// {
-//     void    *ptr;
-//     size_t    total_size;
-
-//     if (!nmemb || !size)
-//         return (malloc(0));
-//     if (nmemb > (size_t) - 1 / size)
-//         return (NULL);
-//     total_size = nmemb * size;
-//     ptr = malloc(total_size);
-//     if (!ptr)
-//         return (NULL);
-//     ft_memset(ptr, '\0', total_size);
-//     return (ptr);
-// }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
