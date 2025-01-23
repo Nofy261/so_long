@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 09:17:24 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:59:12 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int	main(int argc, char **argv)
 
 	game = init_game(argc, argv);
 	if (open_map(argv[1], game) == 1)
-		free_struct(game);
+	{	//free_struct(game);
+		ft_free_all(game);
+		return (-1);// ou exit
+	}
 	map_conditions(game);
 	game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height
 			* SPRITE_PIXEL, "Rabit Party", true);
