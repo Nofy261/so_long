@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 14:08:07 by nolecler          #+#    #+#              #
-#    Updated: 2025/01/23 11:40:39 by nolecler         ###   ########.fr        #
+#    Updated: 2025/01/23 14:09:07 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FSRCS = main.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
 		utils.c \
-		validate_map.c \
+		validate_path.c \
 		check_pec.c \
 		parse_map.c \
 		display.c \
@@ -31,7 +31,7 @@ OFILES = $(FSRCS:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -g -I./MLX42/include
+CFLAGS = -Wall -Werror -Wextra -I./MLX42/include
 
 MLXFLAGS = -ldl -lX11 -lglfw -lm -lz -lbsd -lXext ./MLX42/build/libmlx42.a -pthread
 

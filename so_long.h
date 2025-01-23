@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 10:05:05 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:56:12 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int					check_vertical_walls(t_game *game);
 int					check_form(t_game *game);
 int					check_invalid_elements(t_game *game);
 
-/* validate_map.c*/
+/* validate_path.c*/
 void				flood_fill(int x, int y, t_game *game);
 int					validate_flood_fill(t_game *game);
 int					map_conditions(t_game *game);
@@ -119,7 +119,7 @@ int					ft_putnbr(int n);
 /* free.c */
 void				*ft_free(char **str);
 void				free_texture(t_game *game);
-void				free_struct(t_game *game);
+//void				free_struct(t_game *game);
 void				ft_free_all(t_game *game);
 
 #endif

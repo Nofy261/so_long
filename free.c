@@ -6,17 +6,17 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:51:58 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 10:13:32 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:07:39 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_struct(t_game *game)
-{
-	free(game);
-	exit(1);
-}
+// void	free_struct(t_game *game)
+// {
+// 	free(game);
+// 	exit(1);
+// }
 
 void	free_texture(t_game *game)
 {
@@ -43,6 +43,24 @@ void	*ft_free(char **str)
 	return (NULL);
 }
 
+static void free_mapcopy(t_game *game)
+{
+	int i;
+
+	if (game->mapcopy)
+		{
+			i = 0;
+			while (i < game->height)
+			{
+				if (game->mapcopy[i])
+					free(game->mapcopy[i]);
+				i++;
+			}
+			free(game->mapcopy);
+			game->mapcopy = NULL;
+		}
+}
+
 void	ft_free_all(t_game *game)
 {
 	int	i;
@@ -61,18 +79,7 @@ void	ft_free_all(t_game *game)
 			free(game->map);
 			game->map = NULL;
 		}
-		if (game->mapcopy)
-		{
-			i = 0;
-			while (i < game->height)
-			{
-				if (game->mapcopy[i])
-					free(game->mapcopy[i]);
-				i++;
-			}
-			free(game->mapcopy);
-			game->mapcopy = NULL;
-		}
+		free_mapcopy(game);
 		free_texture(game);
 		if (game->mlx)
 		{

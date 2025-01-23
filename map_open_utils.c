@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 09:33:55 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 12:09:05 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:09:50 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,35 +20,6 @@ void	trim_newline(char *line)
 	if (len > 0 && line[len - 1] == '\n')
 		line[len - 1] = '\0';
 }
-
-// void	get_height_and_width(const char *path, t_game *game)
-// {
-// 	int		fd;
-// 	char	*line;
-// 	int		width;
-// 	int		height;
-
-// 	width = 0;
-// 	height = 0;
-// 	fd = open(path, O_RDONLY);
-// 	if (fd < 0)
-// 	{
-// 		ft_putstr("First Error of opening map\n");
-// 		if (game)
-// 			free(game);
-// 		exit(1);
-// 	}
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		if (height == 0)
-// 			width = ft_strlen(line) - 1;
-// 		height++;
-// 		free(line);
-// 	}
-// 	close(fd);
-// 	game->width = width;
-// 	game->height = height;
-// }
 
 void	get_height_and_width(const char *path, t_game *game)
 {
@@ -77,7 +48,6 @@ void	get_height_and_width(const char *path, t_game *game)
 	}
 	close(fd);
 }
-
 
 int	allocate_map_memory(t_game *game)
 {
