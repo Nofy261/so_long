@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/20 14:08:07 by nolecler          #+#    #+#              #
-#    Updated: 2025/01/23 14:09:07 by nolecler         ###   ########.fr        #
+#    Updated: 2025/01/23 15:55:56 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ CFLAGS = -Wall -Werror -Wextra -I./MLX42/include
 MLXFLAGS = -ldl -lX11 -lglfw -lm -lz -lbsd -lXext ./MLX42/build/libmlx42.a -pthread
 
 all: mlx $(NAME)
-	@echo "\033[32mCompilation successful!\033[0m"
 
 mlx:
 	@if [ -d "./MLX42" ]; then \
@@ -51,6 +50,7 @@ mlx:
 
 $(NAME): $(OFILES)
 	@$(CC) $(CFLAGS) $(OFILES) $(MLXFLAGS) -o $(NAME)
+	@echo "\033[32mCompilation successful!\033[0m"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c -o $@ $<

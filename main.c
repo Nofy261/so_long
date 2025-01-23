@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 15:34:31 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:24:00 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static t_game	*init_game(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("Error: Invalid argument\n");
+		ft_putstr_fd("Error: Invalid argument\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	game = ft_calloc(sizeof(t_game), 1);
 	if (!game)
 	{
-		ft_putstr("Error: Memory allocation failed\n");
+		ft_putstr_fd("Error: Memory allocation failed\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	verif_extension_ber(game, argv);

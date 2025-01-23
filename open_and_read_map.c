@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:56:21 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 15:16:58 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:23:47 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static int	read_map(int fd, t_game *game)
 		game->mapcopy[i] = ft_strdup(line);
 		if (!game->mapcopy[i])
 		{
-			ft_putstr("Error: Memory allocation failed during map reading\n");
+			ft_putstr_fd("Error: Memory allocation failed during map reading\n",
+				2);
 			return (1);
 		}
 		i++;
@@ -44,7 +45,7 @@ int	open_map(const char *path, t_game *game)
 	get_height_and_width(path, game);
 	if (game->height <= 0 || game->width <= 0)
 	{
-		ft_putstr("Error: Invalid size of map\n");
+		ft_putstr_fd("Error: Invalid size of map\n", 2);
 		return (1);
 	}
 	fd = open_file(path);

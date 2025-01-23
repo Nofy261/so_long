@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 09:33:55 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 14:40:56 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:13:45 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	get_height_and_width(const char *path, t_game *game)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putstr("First Error of opening map\n");
+		ft_putstr_fd("First Error of opening map\n", 2);
 		if (game)
 			free(game);
 		exit(1);
@@ -55,7 +55,7 @@ int	allocate_map_memory(t_game *game)
 	game->mapcopy = ft_calloc(game->height + 1, sizeof(char *));
 	if (!game->map || !game->mapcopy)
 	{
-		ft_putstr("Error: Memory allocation failed\n");
+		ft_putstr_fd("Error: Memory allocation failed\n", 2);
 		return (1);
 	}
 	return (0);
@@ -67,6 +67,6 @@ int	open_file(const char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		ft_putstr("Second error of opening map\n");
+		ft_putstr_fd("Second error of opening map\n", 2);
 	return (fd);
 }

@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:05 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 15:24:21 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:02:34 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_game
 	int				move_count;
 }					t_game;
 
-void				ft_putstr(char *str);
+void				ft_putstr_fd(char *str, int fd);
 void				*ft_calloc(size_t nmemb, size_t size);
 void				*ft_memset(void *s, int c, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);

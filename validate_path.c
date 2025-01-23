@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   validate_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:30:20 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/22 13:49:06 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:15:18 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ int	validate_flood_fill(t_game *game)
 		{
 			if (game->mapcopy[i][j] == 'C')
 			{
-				ft_putstr("Error: Items still uncollected.\n");
+				ft_putstr_fd("Error: Items still uncollected.\n", 2);
 				return (1);
 			}
 			if (game->mapcopy[i][j] == 'E')
 			{
-				ft_putstr("Error: door inaccessible\n");
+				ft_putstr_fd("Error: door inaccessible\n", 2);
 				return (1);
 			}
 			j++;
