@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:51:58 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 14:44:14 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:19:26 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void	free_texture(t_game *game)
 {
-	mlx_delete_texture(game->textures.texture_carot);
-	mlx_delete_texture(game->textures.texture_gate);
-	mlx_delete_texture(game->textures.texture_wall);
-	mlx_delete_texture(game->textures.texture_floor);
-	mlx_delete_texture(game->textures.texture_rabit);
+	if (game->mlx)
+	{
+		mlx_delete_texture(game->textures.texture_carot);
+		mlx_delete_texture(game->textures.texture_gate);
+		mlx_delete_texture(game->textures.texture_wall);
+		mlx_delete_texture(game->textures.texture_floor);
+		mlx_delete_texture(game->textures.texture_rabit);
+	}
 }
 
 void	*ft_free(char **str)

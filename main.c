@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 16:24:00 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:20:51 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ int	main(int argc, char **argv)
 	game->mlx = mlx_init(game->width * SPRITE_PIXEL, game->height
 			* SPRITE_PIXEL, "S0_LONG", true);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
+	if (!game->mlx)
+	{
+		ft_putstr_fd("Error: Mlx can't be created\n", 2);
+		ft_free_all(game);
+		return (1);
+	}
 	display_map(game);
 	mlx_key_hook(game->mlx, key_events, game);
 	mlx_loop(game->mlx);
