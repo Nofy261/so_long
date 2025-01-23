@@ -6,13 +6,13 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:56:21 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 13:58:54 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:16:58 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	read_map(int fd, t_game *game)
+static int	read_map(int fd, t_game *game)
 {
 	char	*line;
 	int		i;
@@ -22,7 +22,7 @@ int	read_map(int fd, t_game *game)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			break;
+			break ;
 		game->map[i] = line;
 		game->mapcopy[i] = ft_strdup(line);
 		if (!game->mapcopy[i])

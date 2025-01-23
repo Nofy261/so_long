@@ -6,17 +6,11 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:51:58 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 14:07:39 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:44:14 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// void	free_struct(t_game *game)
-// {
-// 	free(game);
-// 	exit(1);
-// }
 
 void	free_texture(t_game *game)
 {
@@ -43,22 +37,22 @@ void	*ft_free(char **str)
 	return (NULL);
 }
 
-static void free_mapcopy(t_game *game)
+static void	free_mapcopy(t_game *game)
 {
-	int i;
+	int	i;
 
 	if (game->mapcopy)
+	{
+		i = 0;
+		while (i < game->height)
 		{
-			i = 0;
-			while (i < game->height)
-			{
-				if (game->mapcopy[i])
-					free(game->mapcopy[i]);
-				i++;
-			}
-			free(game->mapcopy);
-			game->mapcopy = NULL;
+			if (game->mapcopy[i])
+				free(game->mapcopy[i]);
+			i++;
 		}
+		free(game->mapcopy);
+		game->mapcopy = NULL;
+	}
 }
 
 void	ft_free_all(t_game *game)

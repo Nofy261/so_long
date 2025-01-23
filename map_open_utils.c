@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 09:33:55 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/23 13:09:50 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:40:56 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_height_and_width(const char *path, t_game *game)
 {
 	int		fd;
 	char	*line;
-	
+
 	game->width = 0;
 	game->height = 0;
 	fd = open(path, O_RDONLY);
@@ -52,7 +52,6 @@ void	get_height_and_width(const char *path, t_game *game)
 int	allocate_map_memory(t_game *game)
 {
 	game->map = ft_calloc(game->height + 1, sizeof(char *));
-	
 	game->mapcopy = ft_calloc(game->height + 1, sizeof(char *));
 	if (!game->map || !game->mapcopy)
 	{
