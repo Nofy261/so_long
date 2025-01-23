@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:51:58 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/22 15:14:38 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 08:35:50 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,40 @@ void	*ft_free(char **str)
 
 void	ft_free_all(t_game *game)
 {
-	ft_free(game->mapcopy);
-	mlx_terminate(game->mlx);
-	free_texture(game);
+	int	i;
+	
+	if (game)
+	{
+		if (game->map)
+		{
+			i = 0;
+			while (i < game->height)
+			{
+				if (game->map[i])
+				free (game->map[i]);
+				i++;
+			}
+			free(game->map);
+			game->map = NULL;
+		}
+		if (game->mapcopy)
+		{
+			i = 0;
+			while (i < game->height)
+			{
+				if (game->mapcopy[i])
+					free(game->mapcopy[i]);
+				i++;
+			}
+			free(game->mapcopy);
+			game->mapcopy = NULL;
+		}
+		free_texture(game);
+		if (game->mlx)
+		{
+			mlx_terminate(game->mlx);
+			game->mlx = NULL;
+		}
+		free(game);
+	}
 }

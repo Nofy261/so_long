@@ -6,28 +6,37 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:33:19 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/22 15:07:53 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 08:43:13 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+static t_game *init_game(int argc, char **argv)
 {
 	t_game	*game;
 
 	if (argc != 2)
 	{
 		ft_putstr("Error: Invalid argument\n");
-		return (1);
+		exit(EXIT_FAILURE);
 	}
 	game = ft_calloc(sizeof(t_game), 1);
 	if (!game)
 	{
 		ft_putstr("Error: Memory allocation failed\n");
-		return (1);
+		exit(EXIT_FAILURE);
 	}
 	verif_extension_ber(game, argv);
+	return (game);
+}
+
+
+int	main(int argc, char **argv)
+{
+	t_game *game;
+	
+	game = init_game(argc, argv);
 	if (open_map(argv[1], game) == 1)
 		free_struct(game);
 	map_conditions(game);

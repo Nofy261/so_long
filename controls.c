@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:36:01 by nolecler          #+#    #+#             */
-/*   Updated: 2025/01/22 13:50:18 by nolecler         ###   ########.fr       */
+/*   Updated: 2025/01/23 08:21:53 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ static void	end_game(t_game *game)
 {
 	if (game->count_c == 0 && game->map[game->player_y][game->player_x] == 'E')
 	{
-		ft_free(game->map);
+		if (game->map)
+		{
+			ft_free(game->map);
+			game->map = NULL;
+		}
 		mlx_close_window(game->mlx);
 	}
 }
